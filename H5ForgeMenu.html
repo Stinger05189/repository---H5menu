@@ -118,12 +118,12 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     box-shadow: 0px 10px black;
+    Display: block;
 }
 #tabdown > details{
     
 }
 #tabdown > details > summary{ /*Main container properties*/
-  display: block;
   Color: white; 
   Text-align: left;
   Font-size: 15px;
@@ -200,11 +200,6 @@ summary:focus {outline:0;}
 .dropbtn:hover, .dropbtn:focus{
   background-color: #999999;/*Main tab - hover color*/
 }
-/*Dropdown focus*/
-.dropbtn:focus{
-  background-color: white;/*Main tab - selected color*/
-  Onclick: hide
-}
 .tabdown-details2:hover {background-color: white}
 .tabdown-details2:hover {color: black} 
 }
@@ -228,7 +223,7 @@ button:focus {outline:0;}
 }
 /*-------------------------------4 dropdown options-----------------------------------*/
 /*------------------------------------------------------------------------------------*/
-/*------------------------------------------------------------------------------------*/
+/*---------------------------------------D--------------------------------------------*/
 /*Object properties*/
 .dropdownD {
   text-align: center;
@@ -241,6 +236,20 @@ button:focus {outline:0;}
   overflow: none;
   cursor: pointer;
 }
+.dropdownD-mask {
+   text-align: center;
+    float: left;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 120px;
+    height: 50px;
+    font-size: 0px;
+    display: inline-block;
+    overflow: none;
+    cursor: pointer;
+}
+/*---------------------------------------C--------------------------------------------*/
 /*Object library*/
 .dropdownC {
   
@@ -254,6 +263,20 @@ button:focus {outline:0;}
   overflow: none;
   cursor: pointer;
 }
+.dropdownC-mask {
+   text-align: center;
+    float: left;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 120px;
+    height: 50px;
+    font-size: 0px;
+    display: inline-block;
+    overflow: none;
+    cursor: pointer;
+}
+/*---------------------------------------B--------------------------------------------*/
 /*Tool settings*/
 .dropdownB {
   
@@ -267,6 +290,20 @@ button:focus {outline:0;}
   overflow: none;
   cursor: pointer;
 }
+.dropdownB-mask {
+   text-align: center;
+    float: left;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 120px;
+    height: 50px;
+    font-size: 0px;
+    display: inline-block;
+    overflow: none;
+    cursor: pointer;
+}
+/*---------------------------------------A--------------------------------------------*/
 /*Map options*/
 .dropdownA {
   
@@ -280,11 +317,23 @@ button:focus {outline:0;}
   overflow: none;
   cursor: pointer;
 }
+.dropdownA-mask {
+   text-align: center;
+    float: left;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 120px;
+    height: 50px;
+    font-size: 0px;
+    display: inline-block;
+    overflow: none;
+    cursor: pointer;
+}
 /*-------------------------------banners----------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 .banner1 {
-  display: block;
   Color: white; 
   position: absolute;
   Font-size: 20px;
@@ -300,7 +349,6 @@ button:focus {outline:0;}
   border-bottom: 1px solid black;
 }
 .banner2 {
-  display: block;
   Color: white; 
   position: absolute;
   Font-size: 20px;
@@ -345,9 +393,9 @@ button:focus {outline:0;}
 </head>
 <body>
 <div class="dropdownD">
-   <button id="myBtn" class="dropbtn"><i class="fa fa-bars"></i></a>
-  <a Id="banner1" class="banner1">FORGE OPTIONS</a>
-  <a Id="banner2" class="banner2">OBJECT PROPERTIES</a>
+   <button id="mybtnD" class="dropbtn" style="background-color: white;"><i class="fa fa-bars"></i><i class="dropdownD-mask" onclick="ToggleTabD()"></i></a>
+  <a Id="bannerD1" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerD2" class="banner2">OBJECT PROPERTIES</a>
   <div id="tabdown" class="dropdown-content">
   <details>
     <summary>LOCK</summary>
@@ -410,27 +458,26 @@ button:focus {outline:0;}
 </div>
 
 <div class="dropdownC">
-  <button id="myBtn" class="dropbtn"><i class="fa fa-plus-circle"></i></a>
+  <button id="mybtnC" class="dropbtn"><i class="fa fa-plus-circle"></i></a>
 </div>
 
 <div class="dropdownB">
-  <button id="myBtn" class="dropbtn"><i class="fa fa-fas fa-hammer"></i></a>
+  <button id="mybtnB" class="dropbtn"><i class="fa fa-fas fa-hammer"></i></a>
 </div>
 
 <div class="dropdownA">
-  <button id="myBtn" class="dropbtn"><i class="fa fa-globe"></i></a>
+  <button id="mybtnA" class="dropbtn"><i class="fa fa-globe"></i></a>
 </div>
 
-
+<source src="https://drive.google.com/uc?export=download&id=107YePBWB1uca-kOwpYgDGqA6DIXac7Fv" type="audio/wave">
 <script>
   /*------------------------------click sound---------------------------------------*/   
-  <source src="https://drive.google.com/uc?export=download&id=1LAqiqeBduRBXOK6o8gbIJC552xU-zGtT" type="audio/wave">
 document.getElementById("tabdown").addEventListener("click", generic_click);
 
 var sound = document.createElement("audio");
 
     var src = document.createElement("source");
-    src.src = "https://drive.google.com/uc?export=download&id=1LAqiqeBduRBXOK6o8gbIJC552xU-zGtT";
+    src.src = "https://drive.google.com/uc?export=download&id=107YePBWB1uca-kOwpYgDGqA6DIXac7Fv";
     sound.appendChild(src);
     //More srcs...
 
@@ -447,6 +494,20 @@ var sound = document.createElement("audio");
     }
 
 /*------------------------------dropdown hide---------------------------------------*/  
+function ToggleTabD() {
+  var x = document.getElementById("tabdown");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("bannerD1").style.display = "block";
+    document.getElementById("bannerD2").style.display = "block";
+    document.getElementById("mybtnD").style.background = "white";
+  } else {
+    x.style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("mybtnD").style.background = "#555555";
+  }
+}
 </script>
 
 
