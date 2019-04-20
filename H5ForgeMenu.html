@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 /* width */
 ::-webkit-scrollbar {
@@ -120,7 +121,7 @@ body {
     box-shadow: 0px 10px black;
     Display: block;
 }
-#tabdownC { /*tabdown D Main container*/
+#tabdownC { /*tabdown C Main container*/
     position: absolute;
     background-color: #424242c9;
     width: 480px;
@@ -331,6 +332,17 @@ button:focus {outline:0;}
     overflow: none;
     cursor: pointer;
 }
+#tabdownB {
+  position: absolute;
+    background-color: #424242c9;
+    width: 480px;
+    right: -241px;
+    top: 136px;
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 10px black;
+}
 /*---------------------------------------A--------------------------------------------*/
 /*Map options*/
 .dropdownA {
@@ -357,6 +369,17 @@ button:focus {outline:0;}
     display: inline-block;
     overflow: none;
     cursor: pointer;
+}
+#tabdownA {
+  position: absolute;
+    background-color: #424242c9;
+    width: 480px;
+    right: -361px;
+    top: 136px;
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 10px black;
 }
 /*-------------------------------banners----------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -408,6 +431,10 @@ button:focus {outline:0;}
     Margin: 0;
     padding: 0px 0px 0px 0px;
 }
+.opened-menu {
+    display: block;
+}
+
 /*------------------------------Toggle dropdown---------------------------------------*/
 .show {display:none;}
 /*-------------------------------html-------------------------------------------------*/
@@ -489,9 +516,92 @@ button:focus {outline:0;}
 
 <div class="dropdownC">
    <button id="selectC" class="dropbtn"><i class="fa fa-plus-circle"></i><i class="dropdownC-mask" onclick="ToggleTabC(), colorchange('selectC');"></i></a>
-  <a Id="bannerC1" style="right: -121px; display: none" class="banner1">FORGE OPTIONS</a>
-  <a Id="bannerC2" style="right: -121px; display: none" class="banner2">OBJECT PROPERTIES</a>
+  <a Id="bannerC1" style="right: -121px; display: none" class="banner1">OBJECT LIBRARY</a>
+  <a Id="bannerC2" style="right: -121px; display: none" class="banner2"></a>
   <div id="tabdownC" style="display: none" class="dropdown-content">
+    <a class="tabdown-details2">{PREFABS}</a>
+    <a class="tabdown-details2">GAMEPLAY</a>
+    <a class="tabdown-details2">STRUCTURES</a>
+    <a class="tabdown-details2">PRIMITIVES</a>
+    <a class="tabdown-details2">NATURUAL</a>
+    <a class="tabdown-details2">PROPS</a>
+    <a class="tabdown-details2">BREAKOUT</a>
+    <a class="tabdown-details2">EXTRAS</a>
+    </label></a>
+    </details>
+  </div>
+</div>
+
+<div class="dropdownB">
+   <button id="selectB" class="dropbtn"><i class="fa fa-fas fa-hammer"></i><i class="dropdownB-mask" onclick="ToggleTabB(), colorchange('selectB');"></i></a>
+  <a Id="bannerB1" style="right: -241px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerB2" style="right: -241px; display: none" class="banner2">TOOL SETTINGS</a>
+  <div id="tabdownB" style="display: none" class="dropdown-content">
+    <details open>
+    <summary class="tabdown-details-summary2">LOCK</summary>
+    <a class="tabdown-details2">Enabled:
+    <label class="checkmark-container alignright">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+</label></a>
+  </details>
+  <details open>
+    <summary class="tabdown-details-summary2">GENERAL</summary>
+    <a class="tabdown-details2">PHYSICS:</a>
+    <a class="tabdown-details2">TEAM:</a>
+    <a class="tabdown-details2">(SELECT ALL OF...)</a>
+    <a class="tabdown-details2">POSITION</a>
+    <a class="tabdown-details2">ROTATION</a>
+    <a class="tabdown-details2">LABELS</a>
+    <details open>
+    <summary class="tabdown-details2">BOUNDARY</summary>
+    <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+    <summary class="tabdown-details2">SPAWNING</summary>
+    <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+    <summary class="tabdown-details2">RESPAWN</summary>
+    <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+    <summary class="tabdown-details2">DESPAWN</summary>
+    <a class="tabdown-details2">Timer:
+    <label class="checkmark-container alignright">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label></a>
+    <a class="tabdown-details2">Abandoned/Disterbed:
+    <label class="checkmark-container alignright">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label></a>
+    </details>
+    <details open>
+    <summary class="tabdown-details2">SCRIPTING</summary>
+    <a class="tabdown-details2">Enabled:
+    <label class="checkmark-container alignright">
+    <input type="checkbox" checked>
+    <span class="checkmark"></span>
+    </label></a>
+    </details>
+    <details open>
+    <summary class="tabdown-details2">LIGHTING</summary>
+    <a class="tabdown-details2">Light bake:
+    <label class="checkmark-container alignright">
+    <input type="checkbox" checked>
+    <span class="checkmark"></span>
+    </label></a>
+    </details>
+  </div>
+</div>
+
+<div class="dropdownA">
+   <button id="selectA" class="dropbtn"><i class="fa fa-globe"></i><i class="dropdownA-mask" onclick="ToggleTabA(), colorchange('selectA');"></i></a>
+  <a Id="bannerA1" style="right: -361px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerA2" style="right: -361px; display: none" class="banner2">MAP OPTIONS</a>
+  <div id="tabdownA" style="display: none" class="dropdown-content">
   <details open>
     <summary class="tabdown-details-summary2">LOCK</summary>
     <a class="tabdown-details2">Enabled:
@@ -552,14 +662,6 @@ button:focus {outline:0;}
   </div>
 </div>
 
-<div class="dropdownB">
-  <button id="selectB" class="dropbtn"><i class="fa fa-fas fa-hammer"></i></a>
-</div>
-
-<div class="dropdownA">
-  <button id="selectA" class="dropbtn"><i class="fa fa-globe"></i></a>
-</div>
-
 <source src="sounds/click-menu-content.wav" type="audio/wave">
 <script>
   /*------------------------------click sound ---------------------------------------*/   
@@ -588,13 +690,27 @@ var sound = document.createElement("audio");
 
     }
 
-/*------------------------------dropdown D show/hide---------------------------------------*/  
+/*------------------------------dropdown D show/hide and highlight recovery---------------------------------------*/  
 function ToggleTabD() {
   var x = document.getElementById("tabdown");
   if (x.style.display === "none") {
     x.style.display = "block";
     document.getElementById("bannerD1").style.display = "block";
     document.getElementById("bannerD2").style.display = "block";
+
+
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
 
 ;
   } else {
@@ -605,7 +721,7 @@ function ToggleTabD() {
 }
 </script>
 <script>
-/*------------------------------dropdown C show/hide---------------------------------------*/  
+/*------------------------------dropdown C show/hide and highlight recovery---------------------------------------*/  
 function ToggleTabC() {
   var x = document.getElementById("tabdownC");
   if (x.style.display === "none") {
@@ -614,10 +730,86 @@ function ToggleTabC() {
     document.getElementById("bannerC2").style.display = "block";
 
 
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
+
+
   } else {
     x.style.display = "none";
     document.getElementById("bannerC1").style.display = "none";
     document.getElementById("bannerC2").style.display = "none";
+  }
+}
+</script>
+<script>
+/*------------------------------dropdown B show/hide and highlight recovery---------------------------------------*/  
+function ToggleTabB() {
+  var x = document.getElementById("tabdownB");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("bannerB1").style.display = "block";
+    document.getElementById("bannerB2").style.display = "block";
+
+
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
+
+
+  } else {
+    x.style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+  }
+}
+</script>
+<script>
+/*------------------------------dropdown A show/hide and highlight recovery---------------------------------------*/  
+function ToggleTabA() {
+  var x = document.getElementById("tabdownA");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("bannerA1").style.display = "block";
+    document.getElementById("bannerA2").style.display = "block";
+
+
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+
+
+  } else {
+    x.style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
   }
 }
 </script>
@@ -631,13 +823,7 @@ function colorchange(id) {
     } else {
         document.getElementById(id).style.background = "white";
     }
-
 }
-jQuery(function ($) {
-    $('.select').click(function () {
-        $(this).toggleClass('highlight')
-    })
-})
 </script>
 
 
