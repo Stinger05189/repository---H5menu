@@ -697,13 +697,9 @@ button:focus {
   </div>
 </div>
 
-<source src="sounds/click-menu-content.wav" type="audio/wave" />
+<source src="sounds/button_click_all.wav" type="audio/wave" />
 <script>
   /*------------------------------click sound ---------------------------------------*/
-document.getElementById("selectD").addEventListener("click", generic_click);
-document.getElementById("selectC").addEventListener("click", generic_click);
-document.getElementById("selectB").addEventListener("click", generic_click);
-document.getElementById("selectA").addEventListener("click", generic_click);
 document.getElementById("tabdown").addEventListener("click", generic_click);
 document.getElementById("tabdownC").addEventListener("click", generic_click);
 document.getElementById("tabdownB").addEventListener("click", generic_click);
@@ -712,7 +708,7 @@ document.getElementById("tabdownA").addEventListener("click", generic_click);
 var sound = document.createElement("audio");
 
 var src = document.createElement("source");
-src.src = "sounds/click-menu-content.wav";
+src.src = "sounds/button_click_all.wav";
 sound.appendChild(src);
 //More srcs...
 
@@ -732,6 +728,11 @@ function ToggleTabD() {
 
   if (x.style.display === "none") {
     x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
     document.getElementById("bannerD1").style.display = "block";
     document.getElementById("bannerD2").style.display = "block";
 
@@ -752,6 +753,10 @@ function ToggleTabD() {
     x.style.display = "none";
     document.getElementById("bannerD1").style.display = "none";
     document.getElementById("bannerD2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
   }
 }
 </script>
@@ -763,6 +768,11 @@ function ToggleTabC() {
 
   if (x.style.display === "none") {
     x.style.display = "block";
+
+    var snd = new Audio("sounds/objects_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
     document.getElementById("bannerC1").style.display = "block";
     document.getElementById("bannerC2").style.display = "block";
 
@@ -783,6 +793,10 @@ function ToggleTabC() {
     x.style.display = "none";
     document.getElementById("bannerC1").style.display = "none";
     document.getElementById("bannerC2").style.display = "none";
+
+    var snd = new Audio("sounds/objects_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
   }
 }
 </script>
@@ -794,6 +808,11 @@ function ToggleTabB() {
 
   if (x.style.display === "none") {
     x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
     document.getElementById("bannerB1").style.display = "block";
     document.getElementById("bannerB2").style.display = "block";
 
@@ -814,6 +833,10 @@ function ToggleTabB() {
     x.style.display = "none";
     document.getElementById("bannerB1").style.display = "none";
     document.getElementById("bannerB2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
   }
 }
 </script>
@@ -825,6 +848,11 @@ function ToggleTabA() {
 
   if (x.style.display === "none") {
     x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
     document.getElementById("bannerA1").style.display = "block";
     document.getElementById("bannerA2").style.display = "block";
 
@@ -845,6 +873,10 @@ function ToggleTabA() {
     x.style.display = "none";
     document.getElementById("bannerA1").style.display = "none";
     document.getElementById("bannerA2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
   }
 }
 </script>
