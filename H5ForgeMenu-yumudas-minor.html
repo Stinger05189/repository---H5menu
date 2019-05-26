@@ -114,19 +114,7 @@ body {
     position: absolute;
     background-color: #424242c9;
     width: 480px;
-    right: -1px;
-    Top: 136px;
-    max-height: 650px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-shadow: 0px 10px black;
-    display: block;
-}
-#tabdownC { /*tabdown C Main container*/
-    position: absolute;
-    background-color: #424242c9;
-    width: 480px;
-    right: -121px;
+    right: 0px;
     Top: 136px;
     max-height: 650px;
     overflow-y: auto;
@@ -175,7 +163,7 @@ body {
   color: black;
 }
 summary:focus {
-	outline: 0;
+  outline: 0;
 }
 .tabdown-details-summary2 {
     color: white;
@@ -244,13 +232,13 @@ summary:focus {
 }
 /*Dropdown hover*/
 .dropdown-content a:hover {
-	background-color: white;
+  background-color: white;
 }
 .dropdown-content a:hover {
-	color: black;
+  color: black;
 }
 button:focus {
-	outline: 0;
+  outline: 0;
 }
 .fa {
   color: black;
@@ -272,8 +260,8 @@ button:focus {
   cursor: pointer;
 }
 .dropdownD-mask {
-	text-align: center;
-	float: left;
+  text-align: center;
+  float: left;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -310,6 +298,18 @@ button:focus {
   overflow: none;
   cursor: pointer;
 }
+#tabdownC { /*tabdown C Main container*/
+    position: absolute;
+    background-color: #424242c9;
+    width: 480px;
+    right: -120px;
+    Top: 136px;
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 10px black;
+    display: block;
+}
 /*---------------------------------------B--------------------------------------------*/
 /*Tool settings*/
 .dropdownB {
@@ -340,7 +340,7 @@ button:focus {
   position: absolute;
   background-color: #424242c9;
   width: 480px;
-  right: -241px;
+  right: -240px;
   top: 136px;
   max-height: 650px;
   overflow-y: auto;
@@ -349,6 +349,9 @@ button:focus {
 }
 /*---------------------------------------A--------------------------------------------*/
 /*Map options*/
+/*-------------------------------popout menu------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 .dropdownA {
   text-align: center;
   float: left;
@@ -377,13 +380,51 @@ button:focus {
   position: absolute;
   background-color: #424242c9;
   width: 480px;
-  right: -361px;
+  right: -360px;
   top: 136px;
   max-height: 650px;
   overflow-y: auto;
   overflow-x: hidden;
   box-shadow: 0px 10px black;
 }
+.popout-btn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.popout-btn:hover, .popout-btn:focus {
+  background-color: #2980B9;
+}
+
+.popout {
+  position: relative;
+  display: inline-block;
+}
+
+.popout-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.popout-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.popout a:hover {background-color: #ddd;}
+
+.show {display: block;}
 /*-------------------------------banners----------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -397,7 +438,7 @@ button:focus {
   background: linear-gradient(90deg, rgba(26,26,26,1) 0%, rgba(63,63,63,1) 50%, rgba(26,26,26,1) 100%);
   min-width: 420px;
   height: 20px;
-  right: -1px;
+  right: 0px;
   top: 48px;
   overflow: none;
   border-bottom: 1px solid black;
@@ -412,7 +453,7 @@ button:focus {
   background: linear-gradient(90deg, rgba(59,59,59,1) 0%, rgba(128,128,128,1) 50%, rgba(59,59,59,1) 100%);
   min-width: 450px;
   Height: 20px;
-  right: -1px;
+  right: 0px;
   Top: 99px;
   overflow: none;
   border-bottom: 1px solid black;
@@ -424,7 +465,7 @@ button:focus {
   font-family: 'Electrolize';
   text-align: left;
   Margin: 0;
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px  ;
 }
 .alignright {
   float: right;
@@ -433,14 +474,6 @@ button:focus {
   text-align: right;
   Margin: 0;
   padding: 0px 0px 0px 0px;
-}
-.opened-menu {
-  display: block;
-}
-
-/*------------------------------Toggle dropdown---------------------------------------*/
-.show {
-	display: none;
 }
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -458,7 +491,7 @@ button:focus {
 <div class="dropdownD">
   <button id="selectD" class="dropbtn">
     <i class="fa fa-bars"></i>
-    <i class="dropdownD-mask" onClick="ToggleTabD(); colorchange('selectD');"></i>
+    <i class="dropdownD-mask" onmouseover="mouseover('selectD')" onmouseout="mouseout('selectD')" onClick="ToggleTabD(); colorchange('selectD');"></i>
   </button>
   <a Id="bannerD1" style="; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerD2" style="; display: none" class="banner2">OBJECT PROPERTIES</a>
@@ -474,7 +507,10 @@ button:focus {
     </details>
     <details open>
       <summary>GENERAL</summary>
-      <a>PHYSICS:</a>
+      <a>PHYSICS:
+        <label class="popout-btn alignright">
+        </label>
+      </a>
       <a>TEAM:</a>
       <a>(SELECT ALL OF...)</a>
       <a>POSITION</a>
@@ -533,10 +569,10 @@ button:focus {
 <div class="dropdownC">
   <button id="selectC" class="dropbtn">
     <i class="fa fa-plus-circle"></i>
-    <i class="dropdownC-mask" onclick="ToggleTabC(); colorchange('selectC');"></i>
+    <i class="dropdownC-mask" onmouseover="mouseover('selectC')" onmouseout="mouseout('selectC')" onclick="ToggleTabC(); colorchange('selectC');"></i>
   </button>
-  <a Id="bannerC1" style="right: -121px; display: none" class="banner1">OBJECT LIBRARY</a>
-  <a Id="bannerC2" style="right: -121px; display: none" class="banner2"></a>
+  <a Id="bannerC1" style="right: -120px; display: none" class="banner1">OBJECT LIBRARY</a>
+  <a Id="bannerC2" style="right: -120px; display: none" class="banner2"></a>
   <div id="tabdownC" style="display: none" class="dropdown-content">
     <a class="tabdown-details2">{PREFABS}</a>
     <a class="tabdown-details2">GAMEPLAY</a>
@@ -552,10 +588,10 @@ button:focus {
 <div class="dropdownB">
   <button id="selectB" class="dropbtn">
     <i class="fa fa-fas fa-hammer"></i>
-    <i class="dropdownB-mask" onclick="ToggleTabB(); colorchange('selectB');"></i>
+    <i class="dropdownB-mask" onmouseover="mouseover('selectB')" onmouseout="mouseout('selectB')" onclick="ToggleTabB(); colorchange('selectB');"></i>
   </button>
-  <a Id="bannerB1" style="right: -241px; display: none" class="banner1">FORGE OPTIONS</a>
-  <a Id="bannerB2" style="right: -241px; display: none" class="banner2">TOOL SETTINGS</a>
+  <a Id="bannerB1" style="right: -240px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerB2" style="right: -240px; display: none" class="banner2">TOOL SETTINGS</a>
   <div id="tabdownB" style="display: none" class="dropdown-content">
     <details open>
       <summary class="tabdown-details-summary2">LOCK</summary>
@@ -626,10 +662,10 @@ button:focus {
 <div class="dropdownA">
   <button id="selectA" class="dropbtn">
     <i class="fa fa-globe"></i>
-    <i class="dropdownA-mask" onclick="ToggleTabA(); colorchange('selectA');"></i>
+    <i class="dropdownA-mask" onmouseover="mouseover('selectA')" onmouseout="mouseout('selectA')" onclick="ToggleTabA(); colorchange('selectA');"></i>
   </button>
-  <a Id="bannerA1" style="right: -361px; display: none" class="banner1">FORGE OPTIONS</a>
-  <a Id="bannerA2" style="right: -361px; display: none" class="banner2">MAP OPTIONS</a>
+  <a Id="bannerA1" style="right: -360px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerA2" style="right: -360px; display: none" class="banner2">MAP OPTIONS</a>
   <div id="tabdownA" style="display: none" class="dropdown-content">
     <details open>
       <summary class="tabdown-details-summary2">LOCK</summary>
@@ -723,10 +759,10 @@ function generic_click() {
 }
 
 /*------------------------------dropdown D show/hide and highlight recovery---------------------------------------*/
-function ToggleTabD() {
+function ToggleTabD() { /*on click*/
   var x = document.getElementById("tabdown");
 
-  if (x.style.display === "none") {
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
     x.style.display = "block";
 
     var snd = new Audio("sounds/generic_menu_open.wav");
@@ -749,7 +785,7 @@ function ToggleTabD() {
     document.getElementById("selectB").style.background = "#555555";
     document.getElementById("selectA").style.background = "#555555";
   }
-  else {
+  else { /*if already open, hide it and play sound*/
     x.style.display = "none";
     document.getElementById("bannerD1").style.display = "none";
     document.getElementById("bannerD2").style.display = "none";
@@ -763,10 +799,10 @@ function ToggleTabD() {
 
 <script>
 /*------------------------------dropdown C show/hide and highlight recovery---------------------------------------*/
-function ToggleTabC() {
+function ToggleTabC() { /*on click*/
   var x = document.getElementById("tabdownC");
 
-  if (x.style.display === "none") {
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
     x.style.display = "block";
 
     var snd = new Audio("sounds/objects_menu_open.wav");
@@ -789,7 +825,7 @@ function ToggleTabC() {
     document.getElementById("selectB").style.background = "#555555";
     document.getElementById("selectA").style.background = "#555555";
   }
-  else {
+  else { /*if already open, hide it and play sound*/
     x.style.display = "none";
     document.getElementById("bannerC1").style.display = "none";
     document.getElementById("bannerC2").style.display = "none";
@@ -803,10 +839,10 @@ function ToggleTabC() {
 
 <script>
 /*------------------------------dropdown B show/hide and highlight recovery---------------------------------------*/
-function ToggleTabB() {
+function ToggleTabB() { /*on click*/
   var x = document.getElementById("tabdownB");
 
-  if (x.style.display === "none") {
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
     x.style.display = "block";
 
     var snd = new Audio("sounds/generic_menu_open.wav");
@@ -829,7 +865,7 @@ function ToggleTabB() {
     document.getElementById("selectC").style.background = "#555555";
     document.getElementById("selectA").style.background = "#555555";
   }
-  else {
+  else { /*if already open, hide it and play sound*/
     x.style.display = "none";
     document.getElementById("bannerB1").style.display = "none";
     document.getElementById("bannerB2").style.display = "none";
@@ -843,10 +879,10 @@ function ToggleTabB() {
 
 <script>
 /*------------------------------dropdown A show/hide and highlight recovery---------------------------------------*/
-function ToggleTabA() {
+function ToggleTabA() { /*on click*/
   var x = document.getElementById("tabdownA");
 
-  if (x.style.display === "none") {
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
     x.style.display = "block";
 
     var snd = new Audio("sounds/generic_menu_open.wav");
@@ -869,7 +905,7 @@ function ToggleTabA() {
     document.getElementById("selectC").style.background = "#555555";
     document.getElementById("selectB").style.background = "#555555";
   }
-  else {
+  else { /*if already open, hide it and play sound*/
     x.style.display = "none";
     document.getElementById("bannerA1").style.display = "none";
     document.getElementById("bannerA2").style.display = "none";
@@ -894,6 +930,53 @@ function colorchange(id) {
 }
 </script>
 
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the popout content */
+function openPopout() {
+  document.getElementById("mypopout").classList.toggle("show");
+}
+
+// Close the popout if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var popouts = document.getElementsByClassName("popout-content");
+    var i;
+    for (i = 0; i < popouts.length; i++) {
+      var openPopout = popouts[i];
+      if (openPopout.classList.contains('show')) {
+        openPopout.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<script>
+/* If the tab isn't selected, highlight grey on hover */
+function mouseover(id) {
+  var background = document.getElementById(id).style.backgroundColor;
+   if (background == "white") {
+      event.stopPropagation();
+  }
+  else {
+        document.getElementById(id).style.background = "#999999";
+  }
+ }
+</script>
+
+<script>
+/* If the tab isn't selected, return the tab to default color on mouse out */
+function mouseout(id) {
+  var background = document.getElementById(id).style.backgroundColor;
+   if (background == "white") {
+      event.stopPropagation();
+  }
+  else {
+        document.getElementById(id).style.background = "#555555";
+  }
+ }
+</script>
 
 </body>
 </html>
