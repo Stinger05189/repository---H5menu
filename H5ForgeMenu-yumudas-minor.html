@@ -34,6 +34,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*-------------------------------checkmark--------------------------------------------*/
@@ -485,7 +486,7 @@ button:focus {
   padding: 0px 0px 0px 0px;
 }
 .listbox {
-  right: 15%;
+  right: 3%;
   position: absolute;
   color: white;
   background: none;
@@ -493,37 +494,42 @@ button:focus {
   font-size: 15px;
   font-family: 'Electrolize';
   text-align: right;
+  text-align-last: right;
   text-decoration: none;
   overflow: none;
   outline:none
 
 }
-.listbox_arrowleft {
-  right: 10%;
+}
+.listbox::-webkit-details-marker {
+   color: red;
+}
+.listbox_arrow {
   position: absolute;
-  float: right;
   background: none;
   border: none;
-  color: white;
+  color: black;
   text-align: right;
   font-size: 20px;
   font-family: 'Electrolize';
   margin: none;
   padding: none;
   outline:none
+  display: none;
+}
+.listbox_arrowleft {
+  right: 5%;
+  display: none;
+  outline:none
 }
 .listbox_arrowright {
-  right: 5%;
-  position: absolute;
-  float: right;
-  background: none;
-  border: none;
-  color: white;
-  text-align: right;
-  font-size: 20px;
-  font-family: 'Electrolize';
-  margin: none;
-  padding: none;
+  right: 10%;
+  display: none;
+  outline:none
+}
+
+.arrow_show {
+  display: initial;
   outline:none
 }
 /*-------------------------------html-------------------------------------------------*/
@@ -558,32 +564,17 @@ button:focus {
     </details>
     <details open>
       <summary>GENERAL</summary>
-      <a>PHYSICS:
+      <a id="details-container">PHYSICS:
         <label for="listbox_physics"></label>
         <select class="listbox" id="listbox_physics"> 
           <option>PHASED</option>
           <option>FIXED</option>
           <option>NORMAL</option>
-           <input class="listbox_arrowright" type="button" id="Toggleright" value=">" />
-           <input class="listbox_arrowleft"  type="button" id="Toggleleft" value="<" />
+           <input class="listbox_arrow listbox_arrowleft" type="button" id="Toggleright" value=">" />
+           <input class="listbox_arrow listbox_arrowright"  type="button" id="Toggleleft" value="<" />
         </select>
       </a>
-      <a>TEAM:
-        <label for="listbox_physics"></label>
-        <select class="listbox" id="listbox_physics"> 
-          <option>TEAM 1 (DEFENDER)</option>
-          <option>TEAM 2 (ATTACKER)</option>
-          <option>TEAM 3</option>
-          <option>TEAM 4</option>
-          <option>TEAM 5</option>
-          <option>TEAM 6</option>
-          <option>TEAM 7</option>
-          <option>TEAM 8</option>
-          <option>NUETRAL</option>
-           <input class="listbox_arrowright" type="button" id="Toggleright" value=">" />
-           <input class="listbox_arrowleft"  type="button" id="Toggleleft" value="<" />
-        </select>
-      </a>
+      <a>TEAM:</a>
       <a>(SELECT ALL OF...)</a>
       <a>POSITION</a>
       <a>ROTATION</a>
@@ -1069,6 +1060,20 @@ $('#Toggleright').click(function () {
     dd.find('option').eq(x + 1).prop('selected', true);
 });
 </script>
+
+<script>
+$( "#details-container" ).hover(
+  function() {
+    $( ".listbox_arrow" ).addClass( "arrow_show" );
+        $("#listbox_physics").css("right", "13%");
+  }, function() {
+    $( ".listbox_arrow" ).removeClass( "arrow_show" );
+        $("#listbox_physics").css("right", "3%");
+  }
+);
+</script>
+
+
 
 </body>
 </html>
