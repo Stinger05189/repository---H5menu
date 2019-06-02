@@ -33,6 +33,7 @@ body {
     background-position: cover;
     background-repeat: no-repeat;
     background-size: cover;
+    user-select: none;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -64,7 +65,7 @@ body {
 /* Create a custom checkbox */
 .checkmark {
     position: absolute;
-    top: -1px;
+    top: 6px;
     left: 0;
     height: 16px;
     width: 16px;
@@ -133,7 +134,8 @@ body {
   text-align: left;
   font-size: 15px;
   font-family: 'Electrolize';
-  padding: 8px 45px;
+  padding: 0px 45px;
+  line-height: 2.2;
   border: 1px solid #00000070;
   background-color: #4342438f;
   min-width: 380px;
@@ -152,7 +154,8 @@ body {
   font-size: 15px;
   font-family: 'Electrolize';
   text-align: left;
-  padding: 8px 43px;
+  padding: 0px 43px;
+  line-height: 2.2;
   border: 1px solid #00000070;
   text-decoration: none;
   overflow: auto;
@@ -160,12 +163,6 @@ body {
 #tabdown > details > a:hover {
   background-color: white;
   color: black;
-}
-#tabdown > details > a:hover input ~ .listbox_arrowleft {
-  color: black;
-}
-#tabdown > details > a:hover .listbox_arrowright {
-    color: black;
 }
 #tabdown > details > a:hover .listbox {
   color: black;
@@ -182,19 +179,21 @@ summary:focus {
     text-align: left;
     font-size: 15px;
     font-family: 'Electrolize';
-    padding: 8px 45px;
+    padding: 0px 45px;
+    line-height: 2.2;
     border: 1px solid #00000070;
     background-color: #4342438f;
     min-width: 380px;
 }
-.tabdown-details2 {
+.tabdown-details2 {padding: 0px 43px 0px 27px;
   display: block;
   color: white;
   background-color: #00000094;
   font-size: 15px;
   font-family: 'Electrolize';
   text-align: left;
-  padding: 8px 43px;
+  padding: 0px 43px;
+  line-height: 2.2;
   border: 1px solid #00000070;
   text-decoration: none;
   overflow: auto;
@@ -486,51 +485,49 @@ button:focus {
   padding: 0px 0px 0px 0px;
 }
 .listbox {
-  right: 3%;
-  position: absolute;
+  right: -49%;
+  position: relative;
   color: white;
   background: none;
   border: none;
   font-size: 15px;
+  padding: none;
   font-family: 'Electrolize';
   text-align: right;
   text-align-last: right;
   text-decoration: none;
   overflow: none;
   outline:none
-
-}
-}
-.listbox::-webkit-details-marker {
-   color: red;
 }
 .listbox_arrow {
-  position: absolute;
+  position: relative;
   background: none;
   border: none;
-  color: black;
+  color: white;
   text-align: right;
-  font-size: 20px;
+  vertical-align: center;
+  font-size: 25px;
+  padding: none;
   font-family: 'Electrolize';
   margin: none;
   padding: none;
   outline:none
-  display: none;
+}
+.listbox_arrow:hover {
+  color: #999999;
 }
 .listbox_arrowleft {
-  right: 5%;
-  display: none;
+  right: -51%;
+  font-size: 18px;
   outline:none
 }
 .listbox_arrowright {
-  right: 10%;
-  display: none;
+  right: -51%;
+  font-size: 18px;
   outline:none
 }
-
-.arrow_show {
-  display: initial;
-  outline:none
+.color_invert {
+  color: black;
 }
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -570,8 +567,8 @@ button:focus {
           <option>PHASED</option>
           <option>FIXED</option>
           <option>NORMAL</option>
-           <input class="listbox_arrow listbox_arrowleft" type="button" id="Toggleright" value=">" />
-           <input class="listbox_arrow listbox_arrowright"  type="button" id="Toggleleft" value="<" />
+           <input class="listbox_arrow listbox_arrowleft" type="button" id="Toggleleft" value="❮" />
+           <input class="listbox_arrow listbox_arrowright" type="button" id="Toggleright" value="❯" />
         </select>
       </a>
       <a>TEAM:</a>
@@ -1064,14 +1061,13 @@ $('#Toggleright').click(function () {
 <script>
 $( "#details-container" ).hover(
   function() {
-    $( ".listbox_arrow" ).addClass( "arrow_show" );
-        $("#listbox_physics").css("right", "13%");
+    $( ".listbox_arrow" ).addClass( "color_invert" );
   }, function() {
-    $( ".listbox_arrow" ).removeClass( "arrow_show" );
-        $("#listbox_physics").css("right", "3%");
+    $( ".listbox_arrow" ).removeClass( "color_invert" );
   }
 );
 </script>
+
 
 
 
