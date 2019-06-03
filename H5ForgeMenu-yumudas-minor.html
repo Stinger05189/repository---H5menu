@@ -198,6 +198,9 @@ summary:focus {
   text-decoration: none;
   overflow: auto;
 }
+.left-indent {
+  padding-left: 26px !important;
+}
 /*-------------------------------maindropdown-----------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -529,6 +532,14 @@ button:focus {
 .color_invert {
   color: black;
 }
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  -appearance: none;    
+  
+}
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -550,8 +561,8 @@ button:focus {
   <a Id="bannerD1" style="; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerD2" style="; display: none" class="banner2">OBJECT PROPERTIES</a>
   <div id="tabdown" style="; display: none" class="dropdown-content">
-    <details open>
-      <summary>LOCK</summary>
+    <details>
+      <summary class="left-indent">LOCK</summary>
       <a>Enabled:
         <label class="checkmark-container alignright">
           <input type="checkbox" />
@@ -560,7 +571,7 @@ button:focus {
       </a>
     </details>
     <details open>
-      <summary>GENERAL</summary>
+      <summary class="left-indent">GENERAL</summary>
       <a id="details-container">PHYSICS:
         <label for="listbox_physics"></label>
         <select class="listbox" id="listbox_physics"> 
@@ -576,20 +587,20 @@ button:focus {
       <a>POSITION</a>
       <a>ROTATION</a>
       <a>LABELS</a>
-      <details open>
-        <summary class="tabdown-details2">BOUNDARY</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
         <a class="tabdown-details2">Type:</a>
       </details>
-      <details open>
-        <summary class="tabdown-details2">SPAWNING</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">SPAWNING</summary>
         <a class="tabdown-details2">Type:</a>
       </details>
-      <details open>
-        <summary class="tabdown-details2">RESPAWN</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">RESPAWN</summary>
         <a class="tabdown-details2">Type:</a>
       </details>
-      <details open>
-        <summary class="tabdown-details2">DESPAWN</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">DESPAWN</summary>
         <a class="tabdown-details2">Timer:
           <label class="checkmark-container alignright">
             <input type="checkbox" />
@@ -603,8 +614,8 @@ button:focus {
           </label>
         </a>
       </details>
-      <details open>
-        <summary class="tabdown-details2">SCRIPTING</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">SCRIPTING</summary>
         <a class="tabdown-details2">Enabled:
           <label class="checkmark-container alignright">
             <input type="checkbox" checked />
@@ -612,8 +623,8 @@ button:focus {
           </label>
         </a>
       </details>
-      <details open>
-        <summary class="tabdown-details2">LIGHTING</summary>
+      <details>
+        <summary class="tabdown-details2 left-indent">LIGHTING</summary>
         <a class="tabdown-details2">Light bake:
           <label class="checkmark-container alignright">
             <input type="checkbox" checked />
@@ -1046,11 +1057,6 @@ $('#Toggleleft').click(function () {
     if (max_len == x + 1) x = -1;
     dd.find('option').eq(x - 1).prop('selected', true);
 });
-</script>
-
-<script>
-var dd = $('#listbox_physics');
-var max_len = dd.find('option').length;
 $('#Toggleright').click(function () {
     var x = dd.find('option:selected').index();
     if (max_len == x + 1) x = -1;
