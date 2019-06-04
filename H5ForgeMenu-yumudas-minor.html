@@ -828,8 +828,36 @@ function generic_click() {
   sound.currentTime = 0.01;
   setTimeout(function(){sound.play();}, 1);
 }
+</script>
 
+<script>
+  /*------------------------------keyboard shortcuts ---------------------------------------*/
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 49) {
+     ToggleTabD();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 50) {
+     ToggleTabC();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 51) {
+     ToggleTabB();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 52) {
+     ToggleTabA();
+   }
+  });
+</script>
+
+<script>
+  
 /*------------------------------dropdown D show/hide and highlight recovery---------------------------------------*/
+
 function ToggleTabD() { /*on click*/
   var x = document.getElementById("tabdown");
 
@@ -856,6 +884,7 @@ function ToggleTabD() { /*on click*/
     document.getElementById("selectB").style.background = "#555555";
     document.getElementById("selectA").style.background = "#555555";
   }
+
   else { /*if already open, hide it and play sound*/
     x.style.display = "none";
     document.getElementById("bannerD1").style.display = "none";
@@ -1050,6 +1079,7 @@ function mouseout(id) {
 </script>
 
 <script>
+  /* scroll up/down one uption for left/right arrow clicked */
 var dd = $('#listbox_physics');
 var max_len = dd.find('option').length;
 $('#Toggleleft').click(function () {
@@ -1065,6 +1095,7 @@ $('#Toggleright').click(function () {
 </script>
 
 <script>
+  /* hover color change for arrows */
 $( "#details-container" ).hover(
   function() {
     $( ".listbox_arrow" ).addClass( "color_invert" );
@@ -1073,7 +1104,6 @@ $( "#details-container" ).hover(
   }
 );
 </script>
-
 
 
 
