@@ -34,6 +34,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     user-select: none;
+    z-index: 5;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -537,8 +538,8 @@ select{
   -moz-appearance: none;
   -o-appearance: none;
   -ms-appearance: none;
-  -appearance: none;    
-  
+  -appearance: none;
+
 }
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -574,7 +575,7 @@ select{
       <summary class="left-indent">GENERAL</summary>
       <a >PHYSICS:
         <label for="listbox_physics"></label>
-        <select class="listbox" id="listbox_physics"> 
+        <select class="listbox" id="listbox_physics">
           <option>PHASED</option>
           <option>FIXED</option>
           <option>NORMAL</option>
@@ -585,7 +586,7 @@ select{
       </a>
       <a >TEAM:
         <label for="listbox_team"></label>
-        <select class="listbox" id="listbox_team"> 
+        <select class="listbox" id="listbox_team">
           <option>TEAM 1 (DEFENDER)</option>
           <option>TEAM 2 (ATTACKER)</option>
           <option>TEAM 3</option>
@@ -607,7 +608,7 @@ select{
         <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
         <a class="tabdown-details2">Type:
           <label for="listbox_boundary"></label>
-          <select class="listbox" id="listbox_boundary"> 
+          <select class="listbox" id="listbox_boundary">
             <option>‹NONE›</option>
             <option>CYLINDER</option>
             <option>BOX</option>
@@ -875,7 +876,7 @@ function generic_click() {
 </script>
 
 <script>
-  
+
 /*------------------------------dropdown D show/hide and highlight recovery---------------------------------------*/
 
 function ToggleTabD() { /*on click*/
@@ -1051,7 +1052,7 @@ function colorchange(id) {
 </script>
 
 <script>
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the popout content */
 function openPopout() {
   document.getElementById("mypopout").classList.toggle("show");
