@@ -164,9 +164,6 @@ body {
   background-color: white;
   color: black;
 }
-#tabdown > details > a:hover .listbox {
-  color: black;
-}
 #tabdown > details > summary:hover {
   background-color: white;
   color: black;
@@ -488,22 +485,24 @@ button:focus {
   padding: 0px 0px 0px 0px;
 }
 .listbox {
-  right: -49%;
-  position: relative;
-  color: white;
+  right: 75px;
+  position: absolute;
   background: none;
   border: none;
+  color: white;
+  text-align: right;
+  text-align-last: right;
+  vertical-align: center;
   font-size: 15px;
   padding: none;
   font-family: 'Electrolize';
-  text-align: right;
-  text-align-last: right;
-  text-decoration: none;
-  overflow: none;
-  outline:none
+  margin: none;
+  padding: 8px 0px 0px 0px;
+  outline:none;
+  mix-blend-mode: difference;
 }
 .listbox_arrow {
-  position: relative;
+  position: absolute;
   background: none;
   border: none;
   color: white;
@@ -513,19 +512,20 @@ button:focus {
   padding: none;
   font-family: 'Electrolize';
   margin: none;
-  padding: none;
-  outline:none
+  padding: 3px 0px 0px 0px;
+  outline:none;
+  mix-blend-mode: difference;
 }
 .listbox_arrow:hover {
   color: #999999;
 }
 .listbox_arrowleft {
-  right: -51%;
+  right: 50px;
   font-size: 18px;
   outline:none
 }
 .listbox_arrowright {
-  right: -51%;
+  right: 25px;
   font-size: 18px;
   outline:none
 }
@@ -556,7 +556,7 @@ select{
 <div class="dropdownD">
   <button id="selectD" class="dropbtn">
     <i class="fa fa-bars"></i>
-    <i class="dropdownD-mask" onmouseover="mouseover('selectD')" onmouseout="mouseout('selectD')" onClick="ToggleTabD(); colorchange('selectD');"></i>
+    <i class="dropdownD-mask" onmouseover="mouseover('selectD')" onmouseout="mouseout('selectD')" onClick="ToggleTabD(); colorchange('selectD');" onkeydown=""></i>
   </button>
   <a Id="bannerD1" style="; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerD2" style="; display: none" class="banner2">OBJECT PROPERTIES</a>
@@ -572,24 +572,49 @@ select{
     </details>
     <details open>
       <summary class="left-indent">GENERAL</summary>
-      <a id="details-container">PHYSICS:
+      <a >PHYSICS:
         <label for="listbox_physics"></label>
         <select class="listbox" id="listbox_physics"> 
           <option>PHASED</option>
           <option>FIXED</option>
           <option>NORMAL</option>
-           <input class="listbox_arrow listbox_arrowleft" type="button" id="Toggleleft" value="❮" />
-           <input class="listbox_arrow listbox_arrowright" type="button" id="Toggleright" value="❯" />
+          <option>NORMAL</option>
+           <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_physics" value="❮" />
+           <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_physics" value="❯" />
         </select>
       </a>
-      <a>TEAM:</a>
+      <a >TEAM:
+        <label for="listbox_team"></label>
+        <select class="listbox" id="listbox_team"> 
+          <option>TEAM 1 (DEFENDER)</option>
+          <option>TEAM 2 (ATTACKER)</option>
+          <option>TEAM 3</option>
+          <option>TEAM 4</option>
+          <option>TEAM 5</option>
+          <option>TEAM 6</option>
+          <option>TEAM 7</option>
+          <option>TEAM 8</option>
+          <option>NEUTRAL</option>
+           <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_team" value="❮" />
+           <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_team" value="❯" />
+        </select>
+      </a>
       <a>(SELECT ALL OF...)</a>
       <a>POSITION</a>
       <a>ROTATION</a>
       <a>LABELS</a>
       <details>
         <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
-        <a class="tabdown-details2">Type:</a>
+        <a class="tabdown-details2">Type:
+          <label for="listbox_boundary"></label>
+          <select class="listbox" id="listbox_boundary"> 
+            <option>‹NONE›</option>
+            <option>CYLINDER</option>
+            <option>BOX</option>
+              <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_boundary" value="❮" />
+              <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_boundary" value="❯" />
+        </select>
+      </a>
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">SPAWNING</summary>
@@ -817,11 +842,6 @@ var sound = document.createElement("audio");
 var src = document.createElement("source");
 src.src = "sounds/button_click_all.wav";
 sound.appendChild(src);
-//More srcs...
-
-sound.load();
-sound.volume = 0;
-sound.play();
 
 function generic_click() {
   sound.volume = 1;
@@ -1079,22 +1099,6 @@ function mouseout(id) {
 </script>
 
 <script>
-  /* scroll up/down one uption for left/right arrow clicked */
-var dd = $('#listbox_physics');
-var max_len = dd.find('option').length;
-$('#Toggleleft').click(function () {
-    var x = dd.find('option:selected').index();
-    if (max_len == x + 1) x = -1;
-    dd.find('option').eq(x - 1).prop('selected', true);
-});
-$('#Toggleright').click(function () {
-    var x = dd.find('option:selected').index();
-    if (max_len == x + 1) x = -1;
-    dd.find('option').eq(x + 1).prop('selected', true);
-});
-</script>
-
-<script>
   /* hover color change for arrows */
 $( "#details-container" ).hover(
   function() {
@@ -1104,6 +1108,57 @@ $( "#details-container" ).hover(
   }
 );
 </script>
+
+
+
+<script>/* scroll up/down one uption for left/right arrow clicked */
+/* physics */
+var listbox_physics = $('#listbox_physics');
+var max_len_listbox_physics = listbox_physics.find('option').length;
+$('#arrow_left_physics').click(function () {
+    var x = listbox_physics.find('option:selected').index();
+    if (max_len_listbox_physics == x + 1) x = -1;
+    listbox_physics.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_physics').click(function () {
+    var x = listbox_physics.find('option:selected').index();
+    if (max_len_listbox_physics == x + 1) x = -1;
+    listbox_physics.find('option').eq(x + 1).prop('selected', true);
+});
+</script>
+<script>
+  /* team */
+var listbox_team = $('#listbox_team');
+var max_len_listbox_team = listbox_team.find('option').length;
+$('#arrow_left_team').click(function () {
+    var x = listbox_team.find('option:selected').index();
+    if (max_len_listbox_team == x + 1) x = -1;
+    listbox_team.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_team').click(function () {
+    var x = listbox_team.find('option:selected').index();
+    if (max_len_listbox_team == x + 1) x = -1;
+    listbox_team.find('option').eq(x + 1).prop('selected', true);
+});
+</script>
+<script>
+  /* boundary */
+var listbox_boundary = $('#listbox_boundary');
+var max_len_listbox_boundary = listbox_boundary.find('option').length;
+$('#arrow_left_boundary').click(function () {
+    var x = listbox_boundary.find('option:selected').index();
+    if (max_len_listbox_boundary == x + 1) x = -1;
+    listbox_boundary.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_boundary').click(function () {
+    var x = listbox_boundary.find('option:selected').index();
+    if (max_len_listbox_boundary == x + 1) x = -1;
+    listbox_boundary.find('option').eq(x + 1).prop('selected', true);
+});
+</script>
+
+
+
 
 
 
