@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bababa;
+}
+body {
+   background-image: url("https://static.giantbomb.com/uploads/original/25/257148/3029245-haloinfinite-3.jpg");
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+}
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*-------------------------------checkmark--------------------------------------------*/
+/* The container */
+.checkmark-container {
+  display: block;
+  position: relative;
+  margin: -4px;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkmark-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #ffffff00;
+    border: 2px solid white;
+}
+
+/* On mouse-over, invert color */
+#tabdown > details > a:hover input ~ .checkmark {
+  background-color: white;
+  border-color: black;
+}
+.dropdown-content a:hover input ~ .checkmark {
+  background-color: white;
+  border-color: black;
+}
+/* When the checkbox is checked, add a white background */
+.checkmark-container input:checked ~ .checkmark {
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkmark-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkmark-container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*-------------------------------tabdown----------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+#tabdown { /*tabdown D Main container*/
+    position: absolute;
+    background-color: #424242c9;
+    width: 480px;
+    right: 0px;
+    Top: 136px;
+    max-height: 650px;
+    overflow-y: auto;
+    box-shadow: 0px 10px black;
+    display: block;
+}
+#tabdown > details {
+
+}
+#tabdown > details > summary { /*Main container properties*/
+  color: white;
+  text-align: left;
+  font-size: 15px;
+  font-family: 'Electrolize';
+  padding: 0px 45px;
+  line-height: 2.2;
+  border: 1px solid #00000070;
+  background-color: #4342438f;
+  min-width: 380px;
+  overflow: auto;
+}
+#tabdown > details > summary:hover {
+  background: #EFEFEF;
+}
+#tabdown > details > summary::-webkit-details-marker {
+  display: inline-block;
+}
+#tabdown > details > a {
+  display: block;
+  color: white;
+  background-color: #00000094;
+  font-size: 15px;
+  font-family: 'Electrolize';
+  text-align: left;
+  padding: 0px 43px;
+  line-height: 2.2;
+  border: 1px solid #00000070;
+  text-decoration: none;
+  overflow: auto;
+}
+#tabdown > details > a:hover {
+  background-color: white;
+  color: black;
+}
+#tabdown > details > summary:hover {
+  background-color: white;
+  color: black;
+}
+summary:focus {
+  outline: 0;
+}
+.tabdown-details-summary2 {
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Electrolize';
+    padding: 0px 45px;
+    line-height: 2.2;
+    border: 1px solid #00000070;
+    background-color: #4342438f;
+    min-width: 380px;
+}
+.tabdown-details2 {padding: 0px 43px 0px 27px;
+  display: block;
+  color: white;
+  background-color: #00000094;
+  font-size: 15px;
+  font-family: 'Electrolize';
+  text-align: left;
+  padding: 0px 43px;
+  line-height: 2.2;
+  border: 1px solid #00000070;
+  text-decoration: none;
+  overflow: auto;
+}
+.left-indent {
+  padding-left: 26px !important;
+}
+/*-------------------------------maindropdown-----------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*accual button*/
+.dropbtn {
+  text-align: center;
+  float: left;
+  position: absolute;
+  display: inline-block;
+  width: 120px;
+  height: 50px;
+  font-size: 30px;
+  right: 0px;
+  top: -1px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.01s ease;
+  padding: 0px 0px;
+  background-color: #555555; /*Main tab - default color*/
+}
+/*Dropdown hover*/
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #999999; /*Main tab - hover color*/
+}
+.tabdown-details-summary2:hover {
+  background-color: white;
+  color: black;
+}
+.tabdown-details2:hover {
+  background-color: white;
+  color: black;
+}
+/*-------------------------------dropdown-content-------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*dropdown content*/
+.dropdown-content {
+  right: 0px;
+  top: 136px;
+  max-height: 650px;
+  overflow: auto;
+  box-shadow: 0px 10px black;
+}
+/*Dropdown hover*/
+.dropdown-content a:hover {
+  background-color: white;
+}
+.dropdown-content a:hover {
+  color: black;
+}
+button:focus {
+  outline: 0;
+}
+.fa {
+  color: black;
+  pointer-events:none;
+}
+/*-------------------------------4 dropdown options-----------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*---------------------------------------D--------------------------------------------*/
+/*Object properties*/
+.dropdownD {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: inline-block;
+  border: 1px solid #00000000;
+  overflow: none;
+  cursor: pointer;
+}
+.dropdownD-mask {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 50px;
+  font-size: 0px;
+  display: inline-block;
+  overflow: none;
+  cursor: pointer;
+}
+/*---------------------------------------C--------------------------------------------*/
+/*Object library*/
+.dropdownC {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 140px;
+  top: 20px;
+  display: inline-block;
+  border: 1px solid black;
+  overflow: none;
+  cursor: pointer;
+}
+.dropdownC-mask {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 50px;
+  font-size: 0px;
+  display: inline-block;
+  overflow: none;
+  cursor: pointer;
+}
+#tabdownC { /*tabdown C Main container*/
+    position: absolute;
+    background-color: #424242c9;
+    width: 480px;
+    right: -120px;
+    Top: 136px;
+    max-height: 650px;
+    overflow-y: auto;
+    box-shadow: 0px 10px black;
+    display: block;
+}
+/*---------------------------------------B--------------------------------------------*/
+/*Tool settings*/
+.dropdownB {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 260px;
+  top: 20px;
+  display: inline-block;
+  border: 1px solid black;
+  overflow: none;
+  cursor: pointer;
+}
+.dropdownB-mask {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 50px;
+  font-size: 0px;
+  display: inline-block;
+  overflow: none;
+  cursor: pointer;
+}
+#tabdownB {
+  position: absolute;
+  background-color: #424242c9;
+  width: 480px;
+  right: -240px;
+  top: 136px;
+  max-height: 650px;
+  overflow-y: auto;
+  box-shadow: 0px 10px black;
+}
+/*---------------------------------------A--------------------------------------------*/
+/*Map options*/
+/*-------------------------------popout menu------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+.dropdownA {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 380px;
+  top: 20px;
+  display: inline-block;
+  border: 1px solid black;
+  overflow: none;
+  cursor: pointer;
+}
+.dropdownA-mask {
+  text-align: center;
+  float: left;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 50px;
+  font-size: 0px;
+  display: inline-block;
+  overflow: none;
+  cursor: pointer;
+}
+#tabdownA {
+  position: absolute;
+  background-color: #424242c9;
+  width: 480px;
+  right: -360px;
+  top: 136px;
+  max-height: 650px;
+  overflow-y: auto;
+  box-shadow: 0px 10px black;
+}
+.popout-btn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.popout-btn:hover, .popout-btn:focus {
+  background-color: #2980B9;
+}
+
+.popout {
+  position: relative;
+  display: inline-block;
+}
+
+.popout-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.popout-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.popout a:hover {background-color: #ddd;}
+
+.show {display: block;}
+/*-------------------------------banners----------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+.banner1 {
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  font-family: 'Electrolize';
+  text-align: center;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, rgba(26,26,26,1) 0%, rgba(63,63,63,1) 50%, rgba(26,26,26,1) 100%);
+  min-width: 420px;
+  height: 20px;
+  right: 0px;
+  top: 48px;
+  overflow: none;
+  border-bottom: 1px solid black;
+}
+.banner2 {
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  font-family: 'Electrolize';
+  text-align: left;
+  padding: 8px 15px;
+  background: linear-gradient(90deg, rgba(59,59,59,1) 0%, rgba(128,128,128,1) 50%, rgba(59,59,59,1) 100%);
+  min-width: 450px;
+  height: 20px;
+  right: 0px;
+  top: 99px;
+  overflow: none;
+  border-bottom: 1px solid black;
+}
+/*-------------------------------custom aligning--------------------------------------*/
+.alignleft {
+  float: left;
+  text-align: left;
+  font-family: 'Electrolize';
+  margin: 0;
+  padding: 0px 0px 0px 0px  ;
+}
+.alignright {
+  float: right;
+  text-align: right;
+  font-family: 'Electrolize';
+  margin: 0;
+  padding: 0px 0px 0px 0px;
+}
+.select_arrow {
+  position: absolute;
+  background: none;
+  border: none;
+  color: white;
+  text-align: right;
+  vertical-align: center;
+  font-size: 25px;
+  padding: none;
+  font-family: 'Electrolize';
+  margin: none;
+  padding: 3px 0px 0px 0px;
+  outline:none;
+  mix-blend-mode: difference;
+}
+.select_arrow:hover {
+  color: #999999;
+}
+.select_arrowleft {
+  right: 50px;
+  font-size: 18px;
+  outline:none
+}
+.select_arrowright {
+  right: 25px;
+  font-size: 18px;
+  outline:none
+}
+.color_invert {
+  color: black;
+}
+/*-----------------------------------------------------------------------Custom Select---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: relative;
+  background-color: DodgerBlue;
+  top: 100%;
+  right: 100px;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: gree;
+}
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*-------------------------------html-------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+</style>
+
+</head>
+
+
+
+<body>
+<div class="dropdownD">
+  <button id="selectD" class="dropbtn">
+    <i class="fa fa-bars"></i>
+    <i class="dropdownD-mask" onmouseover="mouseover('selectD')" onmouseout="mouseout('selectD')" onClick="ToggleTabD(); colorchange('selectD');" onkeydown=""></i>
+  </button>
+  <a Id="bannerD1" style="; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerD2" style="; display: none" class="banner2">OBJECT PROPERTIES</a>
+  <div id="tabdown" style="; display: none" class="dropdown-content">
+    <details>
+      <summary class="left-indent">LOCK</summary>
+      <a>Enabled:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="left-indent">GENERAL</summary>
+      <a >PHYSICS:</a>
+      <a class="custom-select" style="width:200px;">
+         <select>
+           <option value="0">Select car:</option>
+           <option value="1">Audi</option>
+           <option value="2">BMW</option>
+           <option value="3">Citroen</option>
+           <option value="4">Ford</option>
+           <option value="5">Honda</option>
+           <option value="6">Jaguar</option>
+           <option value="7">Land Rover</option>
+           <option value="8">Mercedes</option>
+           <option value="9">Mini</option>
+           <option value="10">Nissan</option>
+           <option value="11">Toyota</option>
+           <option value="12">Volvo</option>
+         </select>
+      </a>
+      <a >TEAM:</a>
+      <a>(SELECT ALL OF...)</a>
+      <a>POSITION</a>
+      <a>ROTATION</a>
+      <a>LABELS</a>
+      <details>
+        <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
+        <a class="tabdown-details2">Type:</a>
+      </details>
+      <details>
+        <summary class="tabdown-details2 left-indent">SPAWNING</summary>
+        <a class="tabdown-details2">Type:</a>
+      </details>
+      <details>
+        <summary class="tabdown-details2 left-indent">RESPAWN</summary>
+        <a class="tabdown-details2">Type:</a>
+      </details>
+      <details>
+        <summary class="tabdown-details2 left-indent">DESPAWN</summary>
+        <a class="tabdown-details2">Timer:
+          <label class="checkmark-container alignright">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
+        </a>
+        <a class="tabdown-details2">Abandoned/Disturbed:
+          <label class="checkmark-container alignright">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
+        </a>
+      </details>
+      <details>
+        <summary class="tabdown-details2 left-indent">SCRIPTING</summary>
+        <a class="tabdown-details2">Enabled:
+          <label class="checkmark-container alignright">
+            <input type="checkbox" checked />
+            <span class="checkmark"></span>
+          </label>
+        </a>
+      </details>
+      <details>
+        <summary class="tabdown-details2 left-indent">LIGHTING</summary>
+        <a class="tabdown-details2">Light bake:
+          <label class="checkmark-container alignright">
+            <input type="checkbox" checked />
+            <span class="checkmark"></span>
+          </label>
+        </a>
+      </details>
+  </div>
+</div>
+
+
+
+<div class="dropdownC">
+  <button id="selectC" class="dropbtn">
+    <i class="fa fa-plus-circle"></i>
+    <i class="dropdownC-mask" onmouseover="mouseover('selectC')" onmouseout="mouseout('selectC')" onclick="ToggleTabC(); colorchange('selectC');"></i>
+  </button>
+  <a Id="bannerC1" style="right: -120px; display: none" class="banner1">OBJECT LIBRARY</a>
+  <a Id="bannerC2" style="right: -120px; display: none" class="banner2"></a>
+  <div id="tabdownC" style="display: none" class="dropdown-content">
+    <a class="tabdown-details2">{PREFABS}</a>
+    <a class="tabdown-details2">GAMEPLAY</a>
+    <a class="tabdown-details2">STRUCTURES</a>
+    <a class="tabdown-details2">PRIMITIVES</a>
+    <a class="tabdown-details2">NATURUAL</a>
+    <a class="tabdown-details2">PROPS</a>
+    <a class="tabdown-details2">BREAKOUT</a>
+    <a class="tabdown-details2">EXTRAS</a>
+  </div>
+</div>
+
+<div class="dropdownB">
+  <button id="selectB" class="dropbtn">
+    <i class="fa fa-fas fa-hammer"></i>
+    <i class="dropdownB-mask" onmouseover="mouseover('selectB')" onmouseout="mouseout('selectB')" onclick="ToggleTabB(); colorchange('selectB');"></i>
+  </button>
+  <a Id="bannerB1" style="right: -240px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerB2" style="right: -240px; display: none" class="banner2">TOOL SETTINGS</a>
+  <div id="tabdownB" style="display: none" class="dropdown-content">
+    <details open>
+      <summary class="tabdown-details-summary2">LOCK</summary>
+      <a class="tabdown-details2">Enabled:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details-summary2">GENERAL</summary>
+      <a class="tabdown-details2">PHYSICS:</a>
+      <a class="tabdown-details2">TEAM:</a>
+      <a class="tabdown-details2">(SELECT ALL OF...)</a>
+      <a class="tabdown-details2">POSITION</a>
+      <a class="tabdown-details2">ROTATION</a>
+      <a class="tabdown-details2">LABELS</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">BOUNDARY</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">SPAWNING</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">RESPAWN</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">DESPAWN</summary>
+      <a class="tabdown-details2">Timer:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+      <a class="tabdown-details2">Abandoned/Disterbed:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">SCRIPTING</summary>
+      <a class="tabdown-details2">Enabled:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" checked />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">LIGHTING</summary>
+      <a class="tabdown-details2">Light bake:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" checked />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+  </div>
+</div>
+
+<div class="dropdownA">
+  <button id="selectA" class="dropbtn">
+    <i class="fa fa-globe"></i>
+    <i class="dropdownA-mask" onmouseover="mouseover('selectA')" onmouseout="mouseout('selectA')" onclick="ToggleTabA(); colorchange('selectA');"></i>
+  </button>
+  <a Id="bannerA1" style="right: -360px; display: none" class="banner1">FORGE OPTIONS</a>
+  <a Id="bannerA2" style="right: -360px; display: none" class="banner2">MAP OPTIONS</a>
+  <div id="tabdownA" style="display: none" class="dropdown-content">
+    <details open>
+      <summary class="tabdown-details-summary2">LOCK</summary>
+      <a class="tabdown-details2">Enabled:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details-summary2">GENERAL</summary>
+      <a class="tabdown-details2">PHYSICS:</a>
+      <a class="tabdown-details2">TEAM:</a>
+      <a class="tabdown-details2">(SELECT ALL OF...)</a>
+      <a class="tabdown-details2">POSITION</a>
+      <a class="tabdown-details2">ROTATION</a>
+      <a class="tabdown-details2">LABELS</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">BOUNDARY</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">SPAWNING</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">RESPAWN</summary>
+      <a class="tabdown-details2">Type:</a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">DESPAWN</summary>
+      <a class="tabdown-details2">Timer:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+      <a class="tabdown-details2">Abandoned/Disterbed:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">SCRIPTING</summary>
+      <a class="tabdown-details2">Enabled:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" checked />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+    <details open>
+      <summary class="tabdown-details2">LIGHTING</summary>
+      <a class="tabdown-details2">Light bake:
+        <label class="checkmark-container alignright">
+          <input type="checkbox" checked />
+          <span class="checkmark"></span>
+        </label>
+      </a>
+    </details>
+  </div>
+</div>
+
+<source src="sounds/button_click_all.wav" type="audio/wave" />
+<script>
+  /*------------------------------click sound ---------------------------------------*/
+document.getElementById("tabdown").addEventListener("click", generic_click);
+document.getElementById("tabdownC").addEventListener("click", generic_click);
+document.getElementById("tabdownB").addEventListener("click", generic_click);
+document.getElementById("tabdownA").addEventListener("click", generic_click);
+
+var sound = document.createElement("audio");
+
+var src = document.createElement("source");
+src.src = "sounds/button_click_all.wav";
+sound.appendChild(src);
+
+function generic_click() {
+  sound.volume = 1;
+  sound.currentTime = 0.01;
+  setTimeout(function(){sound.play();}, 1);
+}
+</script>
+
+<script>
+  /*------------------------------keyboard shortcuts ---------------------------------------*/
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 49) {
+     ToggleTabD();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 50) {
+     ToggleTabC();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 51) {
+     ToggleTabB();
+   }
+  });
+  $(document).keydown(function(keyPressed) {
+   if (keyPressed.keyCode == 52) {
+     ToggleTabA();
+   }
+  });
+</script>
+
+<script>
+
+/*------------------------------dropdown D show/hide and highlight recovery---------------------------------------*/
+
+function ToggleTabD() { /*on click*/
+  var x = document.getElementById("tabdown");
+
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
+    x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
+    document.getElementById("bannerD1").style.display = "block";
+    document.getElementById("bannerD2").style.display = "block";
+
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
+  }
+
+  else { /*if already open, hide it and play sound*/
+    x.style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
+  }
+}
+</script>
+
+<script>
+/*------------------------------dropdown C show/hide and highlight recovery---------------------------------------*/
+function ToggleTabC() { /*on click*/
+  var x = document.getElementById("tabdownC");
+
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
+    x.style.display = "block";
+
+    var snd = new Audio("sounds/objects_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
+    document.getElementById("bannerC1").style.display = "block";
+    document.getElementById("bannerC2").style.display = "block";
+
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
+  }
+  else { /*if already open, hide it and play sound*/
+    x.style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+
+    var snd = new Audio("sounds/objects_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
+  }
+}
+</script>
+
+<script>
+/*------------------------------dropdown B show/hide and highlight recovery---------------------------------------*/
+function ToggleTabB() { /*on click*/
+  var x = document.getElementById("tabdownB");
+
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
+    x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
+    document.getElementById("bannerB1").style.display = "block";
+    document.getElementById("bannerB2").style.display = "block";
+
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownA").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectA").style.background = "#555555";
+  }
+  else { /*if already open, hide it and play sound*/
+    x.style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
+  }
+}
+</script>
+
+<script>
+/*------------------------------dropdown A show/hide and highlight recovery---------------------------------------*/
+function ToggleTabA() { /*on click*/
+  var x = document.getElementById("tabdownA");
+
+  if (x.style.display === "none") { /*if hidden unhide it, play sound, and hide rest of tabs*/
+    x.style.display = "block";
+
+    var snd = new Audio("sounds/generic_menu_open.wav");
+    snd.play();
+    snd.currentTime=0;
+
+    document.getElementById("bannerA1").style.display = "block";
+    document.getElementById("bannerA2").style.display = "block";
+
+    document.getElementById("tabdown").style.display = "none";
+    document.getElementById("tabdownC").style.display = "none";
+    document.getElementById("tabdownB").style.display = "none";
+    document.getElementById("bannerD1").style.display = "none";
+    document.getElementById("bannerD2").style.display = "none";
+    document.getElementById("bannerC1").style.display = "none";
+    document.getElementById("bannerC2").style.display = "none";
+    document.getElementById("bannerB1").style.display = "none";
+    document.getElementById("bannerB2").style.display = "none";
+    document.getElementById("selectD").style.background = "#555555";
+    document.getElementById("selectC").style.background = "#555555";
+    document.getElementById("selectB").style.background = "#555555";
+  }
+  else { /*if already open, hide it and play sound*/
+    x.style.display = "none";
+    document.getElementById("bannerA1").style.display = "none";
+    document.getElementById("bannerA2").style.display = "none";
+
+    var snd = new Audio("sounds/generic_menu_close.wav");
+    snd.play();
+    snd.currentTime=0;
+  }
+}
+</script>
+
+<script>
+/*------------------------------dropdown color change---------------------------------------*/
+function colorchange(id) {
+  var background = document.getElementById(id).style.backgroundColor;
+  if (background == "white") {
+      document.getElementById(id).style.background = "#555555";
+  }
+  else {
+      document.getElementById(id).style.background = "white";
+  }
+}
+</script>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the popout content */
+function openPopout() {
+  document.getElementById("mypopout").classList.toggle("show");
+}
+
+// Close the popout if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var popouts = document.getElementsByClassName("popout-content");
+    var i;
+    for (i = 0; i < popouts.length; i++) {
+      var openPopout = popouts[i];
+      if (openPopout.classList.contains('show')) {
+        openPopout.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<script>
+/* If the tab isn't selected, highlight grey on hover */
+function mouseover(id) {
+  var background = document.getElementById(id).style.backgroundColor;
+   if (background == "white") {
+      event.stopPropagation();
+  }
+  else {
+        document.getElementById(id).style.background = "#999999";
+  }
+ }
+</script>
+
+<script>
+/* If the tab isn't selected, return the tab to default color on mouse out */
+function mouseout(id) {
+  var background = document.getElementById(id).style.backgroundColor;
+   if (background == "white") {
+      event.stopPropagation();
+  }
+  else {
+        document.getElementById(id).style.background = "#555555";
+  }
+ }
+</script>
+
+<script>
+  /* hover color change for arrows */
+$( "#details-container" ).hover(
+  function() {
+    $( ".select_arrow" ).addClass( "color_invert" );
+  }, function() {
+    $( ".select_arrow" ).removeClass( "color_invert" );
+  }
+);
+</script>
+
+<script>/*------------------------------CUSTOM SELECT------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+var x, i, j, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
