@@ -6,6 +6,7 @@
 <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 <style>
@@ -34,6 +35,26 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     user-select: none;
+
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -78,7 +99,7 @@ body {
   background-color: white;
   border-color: black;
 }
-.dropdown-content a:hover input ~ .checkmark {
+.generic_menu_content a:hover input ~ .checkmark {
   background-color: white;
   border-color: black;
 }
@@ -122,6 +143,7 @@ body {
     Top: 136px;
     max-height: 650px;
     overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0px 10px black;
     display: block;
 }
@@ -229,11 +251,11 @@ summary:focus {
   background-color: white;
   color: black;
 }
-/*-------------------------------dropdown-content-------------------------------------*/
+/*-------------------------------generic_menu_content-------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*dropdown content*/
-.dropdown-content {
+.generic_menu_content {
   right: 0px;
   top: 136px;
   max-height: 650px;
@@ -241,10 +263,10 @@ summary:focus {
   box-shadow: 0px 10px black;
 }
 /*Dropdown hover*/
-.dropdown-content a:hover {
+.generic_menu_content a:hover {
   background-color: white;
 }
-.dropdown-content a:hover {
+.generic_menu_content a:hover {
   color: black;
 }
 button:focus {
@@ -316,6 +338,7 @@ button:focus {
     Top: 136px;
     max-height: 650px;
     overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0px 10px black;
     display: block;
 }
@@ -353,6 +376,7 @@ button:focus {
   top: 136px;
   max-height: 650px;
   overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0px 10px black;
 }
 /*---------------------------------------A--------------------------------------------*/
@@ -392,46 +416,9 @@ button:focus {
   top: 136px;
   max-height: 650px;
   overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0px 10px black;
 }
-.popout-btn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.popout-btn:hover, .popout-btn:focus {
-  background-color: #2980B9;
-}
-
-.popout {
-  position: relative;
-  display: inline-block;
-}
-
-.popout-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.popout-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.popout a:hover {background-color: #ddd;}
-
-.show {display: block;}
 /*-------------------------------banners----------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -480,7 +467,24 @@ button:focus {
   margin: 0;
   padding: 0px 0px 0px 0px;
 }
-.select_arrow {
+.listbox {
+  right: 75px;
+  position: absolute;
+  background: none;
+  border: none;
+  color: white;
+  text-align: right;
+  text-align-last: right;
+  vertical-align: center;
+  font-size: 15px;
+  padding: none;
+  font-family: 'Electrolize';
+  margin: none;
+  padding: 8px 0px 0px 0px;
+  outline:none;
+  mix-blend-mode: difference;
+}
+.listbox_arrow {
   position: absolute;
   background: none;
   border: none;
@@ -495,15 +499,15 @@ button:focus {
   outline:none;
   mix-blend-mode: difference;
 }
-.select_arrow:hover {
+.listbox_arrow:hover {
   color: #999999;
 }
-.select_arrowleft {
+.listbox_arrowleft {
   right: 50px;
   font-size: 18px;
   outline:none
 }
-.select_arrowright {
+.listbox_arrowright {
   right: 25px;
   font-size: 18px;
   outline:none
@@ -511,75 +515,53 @@ button:focus {
 .color_invert {
   color: black;
 }
-/*-----------------------------------------------------------------------Custom Select---------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*the container must be positioned relative:*/
-.custom-select {
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  -appearance: none;
+
+}
+.left_menu_open {
+  width: 80px;
+  background: none;
+  border: none;
+  color: white;
+  mix-blend-mode: difference;
+  right: -223px;
   position: relative;
-  font-family: Arial;
 }
-
-.custom-select select {
-  display: none; /*hide original SELECT element:*/
-}
-
-.select-selected {
-  background-color: DodgerBlue;
-}
-
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-/*style the items (options), including the selected item:*/
-.select-items div,.select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  user-select: none;
-}
-
-/*style items (options):*/
-.select-items {
-  position: relative;
-  background-color: DodgerBlue;
-  top: 100%;
-  right: 100px;
-  z-index: 99;
-}
-
-/*hide the items when the select box is closed:*/
-.select-hide {
+.left_menu{
+  background-color: #424242c9;
+  width: 480px;
+  right: 530px;
+  Top: 75px;
+  max-height: 530px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0px 10px black;
   display: none;
+  position: absolute;
 }
-
-.select-items div:hover, .same-as-selected {
-  background-color: gree;
+.left_menu_option{
+  padding: 0px 43px 0px 27px;
+  display: block;
+  color: white;
+  background-color: #00000094;
+  font-size: 15px;
+  font-family: 'Electrolize';
+  text-align: left;
+  padding: 0px 43px;
+  line-height: 2.2;
+  border: 1px solid #00000070;
+  text-decoration: none;
+  overflow: auto;
 }
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
+.left_menu_option:hover{
+  background-color: white;
+  color: black;
+}
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -593,14 +575,19 @@ button:focus {
 
 
 <body>
-<div class="dropdownD">
+  <div class="left_menu" id=left_menu>
+    <a id="option1" class="left_menu_option">option 1</a>
+    <a id="option2" class="left_menu_option">option 2</a>
+    <a id="option3" class="left_menu_option">option 3</a>
+  </div>
+    <div class="dropdownD">
   <button id="selectD" class="dropbtn">
     <i class="fa fa-bars"></i>
     <i class="dropdownD-mask" onmouseover="mouseover('selectD')" onmouseout="mouseout('selectD')" onClick="ToggleTabD(); colorchange('selectD');" onkeydown=""></i>
   </button>
   <a Id="bannerD1" style="; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerD2" style="; display: none" class="banner2">OBJECT PROPERTIES</a>
-  <div id="tabdown" style="; display: none" class="dropdown-content">
+  <div id="tabdown" style="; display: none" class="generic_menu_content">
     <details>
       <summary class="left-indent">LOCK</summary>
       <a>Enabled:
@@ -612,32 +599,47 @@ button:focus {
     </details>
     <details open>
       <summary class="left-indent">GENERAL</summary>
-      <a >PHYSICS:</a>
-      <a class="custom-select" style="width:200px;">
-         <select>
-           <option value="0">Select car:</option>
-           <option value="1">Audi</option>
-           <option value="2">BMW</option>
-           <option value="3">Citroen</option>
-           <option value="4">Ford</option>
-           <option value="5">Honda</option>
-           <option value="6">Jaguar</option>
-           <option value="7">Land Rover</option>
-           <option value="8">Mercedes</option>
-           <option value="9">Mini</option>
-           <option value="10">Nissan</option>
-           <option value="11">Toyota</option>
-           <option value="12">Volvo</option>
-         </select>
+      <a >PHYSICS:
+        <label for="listbox_physics"></label>
+        <button class="left_menu-open" id="left_menu_open">
+          <span class="button-text">text goes here</span>
+        </button>
+        <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_physics" value="❮" />
+        <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_physics" value="❯" />
+        </select>
       </a>
-      <a >TEAM:</a>
+      <a >TEAM:
+        <label for="listbox_team"></label>
+        <select class="listbox" id="listbox_team">
+          <option>TEAM 1 (DEFENDER)</option>
+          <option>TEAM 2 (ATTACKER)</option>
+          <option>TEAM 3</option>
+          <option>TEAM 4</option>
+          <option>TEAM 5</option>
+          <option>TEAM 6</option>
+          <option>TEAM 7</option>
+          <option>TEAM 8</option>
+          <option>NEUTRAL</option>
+           <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_team" value="❮" />
+           <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_team" value="❯" />
+        </select>
+      </a>
       <a>(SELECT ALL OF...)</a>
       <a>POSITION</a>
       <a>ROTATION</a>
       <a>LABELS</a>
       <details>
         <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
-        <a class="tabdown-details2">Type:</a>
+        <a class="tabdown-details2">Type:
+          <label for="listbox_boundary"></label>
+          <select class="listbox" id="listbox_boundary">
+            <option>‹NONE›</option>
+            <option>CYLINDER</option>
+            <option>BOX</option>
+              <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_boundary" value="❮" />
+              <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_boundary" value="❯" />
+        </select>
+      </a>
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">SPAWNING</summary>
@@ -692,7 +694,7 @@ button:focus {
   </button>
   <a Id="bannerC1" style="right: -120px; display: none" class="banner1">OBJECT LIBRARY</a>
   <a Id="bannerC2" style="right: -120px; display: none" class="banner2"></a>
-  <div id="tabdownC" style="display: none" class="dropdown-content">
+  <div id="tabdownC" style="display: none" class="generic_menu_content">
     <a class="tabdown-details2">{PREFABS}</a>
     <a class="tabdown-details2">GAMEPLAY</a>
     <a class="tabdown-details2">STRUCTURES</a>
@@ -711,7 +713,7 @@ button:focus {
   </button>
   <a Id="bannerB1" style="right: -240px; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerB2" style="right: -240px; display: none" class="banner2">TOOL SETTINGS</a>
-  <div id="tabdownB" style="display: none" class="dropdown-content">
+  <div id="tabdownB" style="display: none" class="generic_menu_content">
     <details open>
       <summary class="tabdown-details-summary2">LOCK</summary>
       <a class="tabdown-details2">Enabled:
@@ -785,7 +787,7 @@ button:focus {
   </button>
   <a Id="bannerA1" style="right: -360px; display: none" class="banner1">FORGE OPTIONS</a>
   <a Id="bannerA2" style="right: -360px; display: none" class="banner2">MAP OPTIONS</a>
-  <div id="tabdownA" style="display: none" class="dropdown-content">
+  <div id="tabdownA" style="display: none" class="generic_menu_content">
     <details open>
       <summary class="tabdown-details-summary2">LOCK</summary>
       <a class="tabdown-details2">Enabled:
@@ -859,6 +861,7 @@ document.getElementById("tabdown").addEventListener("click", generic_click);
 document.getElementById("tabdownC").addEventListener("click", generic_click);
 document.getElementById("tabdownB").addEventListener("click", generic_click);
 document.getElementById("tabdownA").addEventListener("click", generic_click);
+document.getElementById("left_menu").addEventListener("click", generic_click);
 
 var sound = document.createElement("audio");
 
@@ -1074,28 +1077,6 @@ function colorchange(id) {
 </script>
 
 <script>
-/* When the user clicks on the button,
-toggle between hiding and showing the popout content */
-function openPopout() {
-  document.getElementById("mypopout").classList.toggle("show");
-}
-
-// Close the popout if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var popouts = document.getElementsByClassName("popout-content");
-    var i;
-    for (i = 0; i < popouts.length; i++) {
-      var openPopout = popouts[i];
-      if (openPopout.classList.contains('show')) {
-        openPopout.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
-
-<script>
 /* If the tab isn't selected, highlight grey on hover */
 function mouseover(id) {
   var background = document.getElementById(id).style.backgroundColor;
@@ -1125,93 +1106,77 @@ function mouseout(id) {
   /* hover color change for arrows */
 $( "#details-container" ).hover(
   function() {
-    $( ".select_arrow" ).addClass( "color_invert" );
+    $( ".listbox_arrow" ).addClass( "color_invert" );
   }, function() {
-    $( ".select_arrow" ).removeClass( "color_invert" );
+    $( ".listbox_arrow" ).removeClass( "color_invert" );
   }
 );
 </script>
 
-<script>/*------------------------------CUSTOM SELECT------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-var x, i, j, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-for (i = 0; i < x.length; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
-  /*for each element, create a new DIV that will act as the selected item:*/
-  a = document.createElement("DIV");
-  a.setAttribute("class", "select-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
-  /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < selElmnt.length; j++) {
-    /*for each option in the original select element,
-    create a new DIV that will act as an option item:*/
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
-    c.addEventListener("click", function(e) {
-        /*when an item is clicked, update the original select box,
-        and the selected item:*/
-        var y, i, k, s, h;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < s.length; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            for (k = 0; k < y.length; k++) {
-              y[k].removeAttribute("class");
-            }
-            this.setAttribute("class", "same-as-selected");
-            break;
-          }
-        }
-        h.click();
-    });
-    b.appendChild(c);
-  }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
-      /*when the select box is clicked, close any other select boxes,
-      and open/close the current select box:*/
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-}
-function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
-  var x, y, i, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  for (i = 0; i < y.length; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
-    }
-  }
-  for (i = 0; i < x.length; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
-    }
-  }
-}
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
+
+
+<script>/* scroll up/down one uption for left/right arrow clicked */
+/* physics */
+var listbox_physics = $('#listbox_physics');
+var max_len_listbox_physics = listbox_physics.find('option').length;
+$('#arrow_left_physics').click(function () {
+    var x = listbox_physics.find('option:selected').index();
+    if (max_len_listbox_physics == x + 1) x = -1;
+    listbox_physics.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_physics').click(function () {
+    var x = listbox_physics.find('option:selected').index();
+    if (max_len_listbox_physics == x + 1) x = -1;
+    listbox_physics.find('option').eq(x + 1).prop('selected', true);
+});
+</script>
+<script>
+  /* team */
+var listbox_team = $('#listbox_team');
+var max_len_listbox_team = listbox_team.find('option').length;
+$('#arrow_left_team').click(function () {
+    var x = listbox_team.find('option:selected').index();
+    if (max_len_listbox_team == x + 1) x = -1;
+    listbox_team.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_team').click(function () {
+    var x = listbox_team.find('option:selected').index();
+    if (max_len_listbox_team == x + 1) x = -1;
+    listbox_team.find('option').eq(x + 1).prop('selected', true);
+});
+</script>
+<script>
+  /* boundary */
+var listbox_boundary = $('#listbox_boundary');
+var max_len_listbox_boundary = listbox_boundary.find('option').length;
+$('#arrow_left_boundary').click(function () {
+    var x = listbox_boundary.find('option:selected').index();
+    if (max_len_listbox_boundary == x + 1) x = -1;
+    listbox_boundary.find('option').eq(x - 1).prop('selected', true);
+});
+$('#arrow_right_boundary').click(function () {
+    var x = listbox_boundary.find('option:selected').index();
+    if (max_len_listbox_boundary == x + 1) x = -1;
+    listbox_boundary.find('option').eq(x + 1).prop('selected', true);
+});
 </script>
 
+<script>
+$("#left_menu_open").click(function() {
+    // assumes element with id='button'
+    $("#left_menu").toggle();
+});
+</script>
 
+<script>
+// Add click event to all buttons with the class .left_menu-option
+$(".left_menu_option").click( function() {
 
+  // Set the text of the button
+  $("#left_menu_open .button-text").text($(this).text());
 
+});
+</script>
 
 
 
