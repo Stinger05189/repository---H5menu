@@ -7,6 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 <style>
@@ -524,7 +525,9 @@ select{
 
 }
 .left_menu_open {
-  width: 80px;
+  word-wrap: normal !important;
+  text-align: right;
+  text-align-last: right;
   background: none;
   border: none;
   color: white;
@@ -543,6 +546,7 @@ select{
   box-shadow: 0px 10px black;
   display: none;
   position: absolute;
+  cursor: pointer;
 }
 .left_menu_option{
   padding: 0px 43px 0px 27px;
@@ -562,6 +566,10 @@ select{
   background-color: white;
   color: black;
 }
+.left_menu_option_selected, .left_menu_option_selected:hover{
+  background-color: #555555;
+  color: white;
+}
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -575,10 +583,21 @@ select{
 
 
 <body>
-  <div class="left_menu" id=left_menu>
-    <a id="option1" class="left_menu_option">option 1</a>
-    <a id="option2" class="left_menu_option">option 2</a>
-    <a id="option3" class="left_menu_option">option 3</a>
+  <div class="left_menu" id=left_menu__variant_physics>
+    <div class="left_menu_option left_menu_option_selected">PHASED</div>
+    <div class="left_menu_option">FIXED</div>
+    <div class="left_menu_option">NORMAL</div>
+  </div>
+  <div class="left_menu" id=left_menu__variant_team>
+    <div class="left_menu_option left_menu_option_selected">TEAM 1 (DEFENDER)</div>
+    <div class="left_menu_option">TEAM 2 (ATTACKER)</div>
+    <div class="left_menu_option">TEAM 3</div>
+    <div class="left_menu_option">TEAM 4</div>
+    <div class="left_menu_option">TEAM 5</div>
+    <div class="left_menu_option">TEAM 6</div>
+    <div class="left_menu_option">TEAM 7</div>
+    <div class="left_menu_option">TEAM 8</div>
+    <div class="left_menu_option">NEUTRAL</div>
   </div>
     <div class="dropdownD">
   <button id="selectD" class="dropbtn">
@@ -601,8 +620,8 @@ select{
       <summary class="left-indent">GENERAL</summary>
       <a >PHYSICS:
         <label for="listbox_physics"></label>
-        <button class="left_menu-open" id="left_menu_open">
-          <span class="button-text">text goes here</span>
+        <button class="left_menu_open"id="left_menu_open">
+          <span class="button-text">PHASED</span>
         </button>
         <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_physics" value="❮" />
         <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_physics" value="❯" />
@@ -861,7 +880,7 @@ document.getElementById("tabdown").addEventListener("click", generic_click);
 document.getElementById("tabdownC").addEventListener("click", generic_click);
 document.getElementById("tabdownB").addEventListener("click", generic_click);
 document.getElementById("tabdownA").addEventListener("click", generic_click);
-document.getElementById("left_menu").addEventListener("click", generic_click);
+document.getElementById("left_menu__variant_physics").addEventListener("click", generic_click);
 
 var sound = document.createElement("audio");
 
@@ -1115,68 +1134,45 @@ $( "#details-container" ).hover(
 
 
 
-<script>/* scroll up/down one uption for left/right arrow clicked */
-/* physics */
-var listbox_physics = $('#listbox_physics');
-var max_len_listbox_physics = listbox_physics.find('option').length;
-$('#arrow_left_physics').click(function () {
-    var x = listbox_physics.find('option:selected').index();
-    if (max_len_listbox_physics == x + 1) x = -1;
-    listbox_physics.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_physics').click(function () {
-    var x = listbox_physics.find('option:selected').index();
-    if (max_len_listbox_physics == x + 1) x = -1;
-    listbox_physics.find('option').eq(x + 1).prop('selected', true);
-});
-</script>
-<script>
-  /* team */
-var listbox_team = $('#listbox_team');
-var max_len_listbox_team = listbox_team.find('option').length;
-$('#arrow_left_team').click(function () {
-    var x = listbox_team.find('option:selected').index();
-    if (max_len_listbox_team == x + 1) x = -1;
-    listbox_team.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_team').click(function () {
-    var x = listbox_team.find('option:selected').index();
-    if (max_len_listbox_team == x + 1) x = -1;
-    listbox_team.find('option').eq(x + 1).prop('selected', true);
-});
-</script>
-<script>
-  /* boundary */
-var listbox_boundary = $('#listbox_boundary');
-var max_len_listbox_boundary = listbox_boundary.find('option').length;
-$('#arrow_left_boundary').click(function () {
-    var x = listbox_boundary.find('option:selected').index();
-    if (max_len_listbox_boundary == x + 1) x = -1;
-    listbox_boundary.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_boundary').click(function () {
-    var x = listbox_boundary.find('option:selected').index();
-    if (max_len_listbox_boundary == x + 1) x = -1;
-    listbox_boundary.find('option').eq(x + 1).prop('selected', true);
-});
-</script>
+
+
 
 <script>
-$("#left_menu_open").click(function() {
-    // assumes element with id='button'
-    $("#left_menu").toggle();
-});
-</script>
-
-<script>
-// Add click event to all buttons with the class .left_menu-option
 $(".left_menu_option").click( function() {
-
-  // Set the text of the button
-  $("#left_menu_open .button-text").text($(this).text());
-
+    if ( $(this).hasClass(".left_menu_option_selected") ) {
+    } else {
+        $(".left_menu_option").removeClass("left_menu_option_selected");
+        $(this).addClass("left_menu_option_selected");
+        $("#left_menu_open .button-text").text($(this).text());
+        $("#left_menu__variant_physics").hide();
+    }
 });
 </script>
+
+<script>
+$('#left_menu_open').click( function(event){
+        event.stopPropagation();
+        $('#left_menu__variant_physics').toggle();
+    });
+    $(document).click( function(){
+        $('#left_menu__variant_physics').hide();
+    });
+</script>
+
+        <script>
+        $("#arrow_left_physics").click(function() {
+          var $selected = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+          var divs = $("#left_menu__variant_physics").children();
+            divs.eq((divs.index($selected) - 1) % divs.length).addClass("left_menu_option_selected");
+            $("#left_menu_open .button-text").text($(".left_menu_option_selected").text());
+            });
+        $("#arrow_right_physics").click(function() {
+            var $selected = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+            var divs = $selected.parent().children();
+            divs.eq((divs.index($selected) + 1) % divs.length).addClass("left_menu_option_selected");
+            $("#left_menu_open .button-text").text($(".left_menu_option_selected").text());
+        });
+        </script>
 
 
 
