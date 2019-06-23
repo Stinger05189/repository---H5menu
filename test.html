@@ -7,6 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 <style>
@@ -523,14 +524,19 @@ select{
   -appearance: none;
 
 }
-.left_menu_open {
-  width: 80px;
+.left_menu_opener {
+  word-wrap: normal !important;
+  text-align: right;
+  text-align-last: right;
   background: none;
   border: none;
   color: white;
   mix-blend-mode: difference;
   right: -223px;
   position: relative;
+}
+.left_menu_opener_text {
+  align: right;
 }
 .left_menu{
   background-color: #424242c9;
@@ -543,6 +549,7 @@ select{
   box-shadow: 0px 10px black;
   display: none;
   position: absolute;
+  cursor: pointer;
 }
 .left_menu_option{
   padding: 0px 43px 0px 27px;
@@ -551,7 +558,6 @@ select{
   background-color: #00000094;
   font-size: 15px;
   font-family: 'Electrolize';
-  text-align: left;
   padding: 0px 43px;
   line-height: 2.2;
   border: 1px solid #00000070;
@@ -561,6 +567,10 @@ select{
 .left_menu_option:hover{
   background-color: white;
   color: black;
+}
+.left_menu_option_selected, .left_menu_option_selected:hover{
+  background-color: #555555;
+  color: white;
 }
 /*-------------------------------html-------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -575,10 +585,21 @@ select{
 
 
 <body>
-  <div class="left_menu" id=left_menu>
-    <a id="option1" class="left_menu_option">option 1</a>
-    <a id="option2" class="left_menu_option">option 2</a>
-    <a id="option3" class="left_menu_option">option 3</a>
+  <div class="left_menu" id=left_menu__variant_physics>
+    <div class="left_menu_option left_menu_option_selected">PHASED</div>
+    <div class="left_menu_option">FIXED</div>
+    <div class="left_menu_option">NORMAL</div>
+  </div>
+  <div class="left_menu" id=left_menu__variant_team>
+    <div class="left_menu_option left_menu_option_selected">TEAM 1 (DEFENDER)</div>
+    <div class="left_menu_option">TEAM 2 (ATTACKER)</div>
+    <div class="left_menu_option">TEAM 3</div>
+    <div class="left_menu_option">TEAM 4</div>
+    <div class="left_menu_option">TEAM 5</div>
+    <div class="left_menu_option">TEAM 6</div>
+    <div class="left_menu_option">TEAM 7</div>
+    <div class="left_menu_option">TEAM 8</div>
+    <div class="left_menu_option">NEUTRAL</div>
   </div>
     <div class="dropdownD">
   <button id="selectD" class="dropbtn">
@@ -601,27 +622,20 @@ select{
       <summary class="left-indent">GENERAL</summary>
       <a >PHYSICS:
         <label for="listbox_physics"></label>
-        <button class="left_menu-open" id="left_menu_open">
-          <span class="button-text">text goes here</span>
+        <button class="left_menu_opener">
+          <span id="left_menu_opener_physics"class="left_menu_opener_text">PHASED</span>
         </button>
         <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_physics" value="❮" />
         <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_physics" value="❯" />
         </select>
       </a>
-      <a >TEAM:
+      <a >team:
         <label for="listbox_team"></label>
-        <select class="listbox" id="listbox_team">
-          <option>TEAM 1 (DEFENDER)</option>
-          <option>TEAM 2 (ATTACKER)</option>
-          <option>TEAM 3</option>
-          <option>TEAM 4</option>
-          <option>TEAM 5</option>
-          <option>TEAM 6</option>
-          <option>TEAM 7</option>
-          <option>TEAM 8</option>
-          <option>NEUTRAL</option>
-           <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_team" value="❮" />
-           <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_team" value="❯" />
+        <button class="left_menu_opener">
+          <span id="left_menu_opener_team"class="left_menu_opener_text">TEAM 1 (DEFENDER)</span>
+        </button>
+        <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_team" value="❮" />
+        <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_team" value="❯" />
         </select>
       </a>
       <a>(SELECT ALL OF...)</a>
@@ -861,7 +875,7 @@ document.getElementById("tabdown").addEventListener("click", generic_click);
 document.getElementById("tabdownC").addEventListener("click", generic_click);
 document.getElementById("tabdownB").addEventListener("click", generic_click);
 document.getElementById("tabdownA").addEventListener("click", generic_click);
-document.getElementById("left_menu").addEventListener("click", generic_click);
+document.getElementById("left_menu__variant_physics").addEventListener("click", generic_click);
 
 var sound = document.createElement("audio");
 
@@ -1115,71 +1129,97 @@ $( "#details-container" ).hover(
 
 
 
-<script>/* scroll up/down one uption for left/right arrow clicked */
-/* physics */
-var listbox_physics = $('#listbox_physics');
-var max_len_listbox_physics = listbox_physics.find('option').length;
-$('#arrow_left_physics').click(function () {
-    var x = listbox_physics.find('option:selected').index();
-    if (max_len_listbox_physics == x + 1) x = -1;
-    listbox_physics.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_physics').click(function () {
-    var x = listbox_physics.find('option:selected').index();
-    if (max_len_listbox_physics == x + 1) x = -1;
-    listbox_physics.find('option').eq(x + 1).prop('selected', true);
-});
-</script>
 <script>
-  /* team */
-var listbox_team = $('#listbox_team');
-var max_len_listbox_team = listbox_team.find('option').length;
-$('#arrow_left_team').click(function () {
-    var x = listbox_team.find('option:selected').index();
-    if (max_len_listbox_team == x + 1) x = -1;
-    listbox_team.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_team').click(function () {
-    var x = listbox_team.find('option:selected').index();
-    if (max_len_listbox_team == x + 1) x = -1;
-    listbox_team.find('option').eq(x + 1).prop('selected', true);
-});
+/*------------------------------left menus---------------------------------------*/
+/*------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------*/
+
+
+/*-------------physics-------------*/
+/*left menu show/hide*/
+$('#left_menu_opener_physics').click( function(event){/* when the text area is clicked...*/
+        event.stopPropagation();
+        $(".left_menu").not('#left_menu__variant_physics').hide();/*hide all but this one*/
+        $('#left_menu__variant_physics').toggle();/*toggle visibility*/
+    });
+    $(document).click( function(){
+        $(".left_menu").hide();/*when the user clicks on anything but the open menu, close all left-opening type menus*/
+    });
 </script>
+
 <script>
-  /* boundary */
-var listbox_boundary = $('#listbox_boundary');
-var max_len_listbox_boundary = listbox_boundary.find('option').length;
-$('#arrow_left_boundary').click(function () {
-    var x = listbox_boundary.find('option:selected').index();
-    if (max_len_listbox_boundary == x + 1) x = -1;
-    listbox_boundary.find('option').eq(x - 1).prop('selected', true);
-});
-$('#arrow_right_boundary').click(function () {
-    var x = listbox_boundary.find('option:selected').index();
-    if (max_len_listbox_boundary == x + 1) x = -1;
-    listbox_boundary.find('option').eq(x + 1).prop('selected', true);
+$(".left_menu_option").click( function() {/*when the user clicks on a option...*/
+        if( $("#left_menu__variant_physics").css('display') == 'block' ) {/*if the menu is open/visible*/
+          $(".left_menu_option").removeClass("left_menu_option_selected");/*deselect selected option*/
+          $(this).addClass("left_menu_option_selected");/*select the clicked option */
+          $("#left_menu_opener_physics").text($(this).text());/*update the displayed text to the selected option*/
+          $((this).parent).hide();/*close the menu*/
+} else {
+}
 });
 </script>
 
 <script>
-$("#left_menu_open").click(function() {
-    // assumes element with id='button'
-    $("#left_menu").toggle();
+$("#arrow_left_physics").click(function() {/*when the user clicks on the left arrow...*/
+  var $selectedPrev_physics = $(".left_menu_option_selected").removeClass("left_menu_option_selected");/*the previously selected option becomes the selectedPrev varibale*/
+  var options_physics = $("#left_menu__variant_physics.left_menu").children();/*all children become the options variable*/
+    options_physics.eq((options_physics.index($selectedPrev_physics) - 1) % options_physics.length).addClass("left_menu_option_selected");/*move the selection left/up 1*/
+    $("#left_menu_opener_physics").text($(".left_menu_option_selected").text());/*update the displayed text to the selected option*/
+    });
+$("#arrow_right_physics").click(function() {/*when the user clicks on the right arrow...*/
+    var $selectedPrev_physics = $(".left_menu_option_selected").removeClass("left_menu_option_selected");/*the previously selected option becomes the selectedPrev varibale*/
+    var options_physics = $("#left_menu__variant_physics.left_menu").children();/*all children become the options variable*/
+options_physics.eq((options_physics.index($selectedPrev_physics) + 1) % options_physics.length).addClass("left_menu_option_selected");/*move the selection right/down 1*/
+    $("#left_menu_opener_physics").text($(".left_menu_option_selected").text());/*update the displayed text to the selected option*/
 });
 </script>
 
+
+
+
+
+
+
+
 <script>
-// Add click event to all buttons with the class .left_menu-option
+/*-------------team-------------*/
+/*left menu show/hide*/
+$('#left_menu_opener_team').click( function(event){
+        event.stopPropagation();
+        $(".left_menu").not('#left_menu__variant_team').hide();
+        $('#left_menu__variant_team').toggle();
+    });
+    $(document).click( function(){
+        $(".left_menu").hide();
+    });
+</script>
+
+<script>
 $(".left_menu_option").click( function() {
-
-  // Set the text of the button
-  $("#left_menu_open .button-text").text($(this).text());
-
+        if( $("#left_menu__variant_team").css('display') == 'block' ) {
+          $(".left_menu_option").removeClass("left_menu_option_selected");
+          $(this).addClass("left_menu_option_selected");
+          $("#left_menu_opener_team").text($(this).text());
+          $((this).parent).hide();
+} else {
+}
 });
 </script>
 
-
-
+<script>
+$("#arrow_left_team").click(function() {
+  var $selectedPrev_team = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+  var options_team = $("#left_menu__variant_team.left_menu").children();
+    options_team.eq((options_team.index($selectedPrev_team) - 1) % options_team.length).addClass("left_menu_option_selected");
+    $("#left_menu_opener_team").text($(".left_menu_option_selected").text());
+    });
+$("#arrow_right_team").click(function() {
+    var $selectedPrev_team = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+    var options_team = $("#left_menu__variant_team.left_menu").children();
+options_team.eq((options_team.index($selectedPrev_team) + 1) % options_team.length).addClass("left_menu_option_selected");
+    $("#left_menu_opener_team").text($(".left_menu_option_selected").text());
+});
+</script>
 
 </body>
 </html>
