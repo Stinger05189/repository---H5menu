@@ -220,6 +220,9 @@ summary:focus {
 .left-indent {
   padding-left: 26px !important;
 }
+.right-indent {
+  padding-left: 75px !important;
+}
 /*-------------------------------maindropdown-----------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -468,23 +471,6 @@ button:focus {
   margin: 0;
   padding: 0px 0px 0px 0px;
 }
-.listbox {
-  right: 75px;
-  position: absolute;
-  background: none;
-  border: none;
-  color: white;
-  text-align: right;
-  text-align-last: right;
-  vertical-align: center;
-  font-size: 15px;
-  padding: none;
-  font-family: 'Electrolize';
-  margin: none;
-  padding: 8px 0px 0px 0px;
-  outline:none;
-  mix-blend-mode: difference;
-}
 .listbox_arrow {
   position: absolute;
   background: none;
@@ -532,8 +518,9 @@ select{
   border: none;
   color: white;
   mix-blend-mode: difference;
-  right: -223px;
-  position: relative;
+  right: 70px;
+  position: absolute;
+  margin-top: 8px;
 }
 .left_menu_opener_text {
   align: right;
@@ -601,6 +588,11 @@ select{
     <div class="left_menu_option">TEAM 8</div>
     <div class="left_menu_option">NEUTRAL</div>
   </div>
+  <div class="left_menu" id=left_menu__variant_boundary>
+    <div class="left_menu_option left_menu_option_selected">‹NONE›</div>
+    <div class="left_menu_option">CYLINDER</div>
+    <div class="left_menu_option">BOX</div>
+  </div>
     <div class="dropdownD">
   <button id="selectD" class="dropbtn">
     <i class="fa fa-bars"></i>
@@ -621,22 +613,18 @@ select{
     <details open>
       <summary class="left-indent">GENERAL</summary>
       <a >PHYSICS:
-        <label for="listbox_physics"></label>
         <button class="left_menu_opener">
           <span id="left_menu_opener_physics"class="left_menu_opener_text">PHASED</span>
         </button>
         <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_physics" value="❮" />
         <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_physics" value="❯" />
-        </select>
       </a>
       <a >team:
-        <label for="listbox_team"></label>
         <button class="left_menu_opener">
           <span id="left_menu_opener_team"class="left_menu_opener_text">TEAM 1 (DEFENDER)</span>
         </button>
         <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_team" value="❮" />
         <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_team" value="❯" />
-        </select>
       </a>
       <a>(SELECT ALL OF...)</a>
       <a>POSITION</a>
@@ -644,34 +632,63 @@ select{
       <a>LABELS</a>
       <details>
         <summary class="tabdown-details2 left-indent">BOUNDARY</summary>
-        <a class="tabdown-details2">Type:
-          <label for="listbox_boundary"></label>
-          <select class="listbox" id="listbox_boundary">
-            <option>‹NONE›</option>
-            <option>CYLINDER</option>
-            <option>BOX</option>
-              <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_boundary" value="❮" />
-              <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_boundary" value="❯" />
-        </select>
-      </a>
+        <a class="tabdown-details2 right-indent">Type:
+          <button class="left_menu_opener">
+            <span id="left_menu_opener_boundary"class="left_menu_opener_text">‹NONE›</span>
+          </button>
+          <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_boundary" value="❮" />
+          <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_boundary" value="❯" />
+        </a>
       </details>
+
+
+
+
+      <details>
+        <summary class="tabdown-details2 left-indent">COLORS</summary>
+        <a class="tabdown-details2 right-indent">Primary:
+          <button class="left_menu_opener">
+            <span id="left_menu_opener_colors_def_primary"class="left_menu_opener_text">. . .</span>
+          </button>
+          <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_colors_def_primary" value="❮" />
+          <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_colors_def_primary" value="❯" />
+        </a>
+        <a class="tabdown-details2 right-indent">Secondary:
+          <button class="left_menu_opener">
+            <span id="left_menu_opener_colors_def_secondary"class="left_menu_opener_text">. . .</span>
+          </button>
+          <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_colors_def_secondary" value="❮" />
+          <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_colors_def_secondary" value="❯" />
+        </a>
+        <a class="tabdown-details2 right-indent">Tetiary:
+          <button class="left_menu_opener">
+            <span id="left_menu_opener_colors_def_tetiary"class="left_menu_opener_text">. . .</span>
+          </button>
+          <input class="listbox_arrow listbox_arrowleft" type="button" id="arrow_left_colors_def_tetiary" value="❮" />
+          <input class="listbox_arrow listbox_arrowright" type="button" id="arrow_right_colors_def_tetiary" value="❯" />
+        </a>
+      </details>
+
+
+
+
       <details>
         <summary class="tabdown-details2 left-indent">SPAWNING</summary>
-        <a class="tabdown-details2">Type:</a>
+        <a class="tabdown-details2 right-indent">Type:</a>
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">RESPAWN</summary>
-        <a class="tabdown-details2">Type:</a>
+        <a class="tabdown-details2 right-indent">Type:</a>
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">DESPAWN</summary>
-        <a class="tabdown-details2">Timer:
+        <a class="tabdown-details2 right-indent">Timer:
           <label class="checkmark-container alignright">
             <input type="checkbox" />
             <span class="checkmark"></span>
           </label>
         </a>
-        <a class="tabdown-details2">Abandoned/Disturbed:
+        <a class="tabdown-details2 right-indent">Abandoned/Disturbed:
           <label class="checkmark-container alignright">
             <input type="checkbox" />
             <span class="checkmark"></span>
@@ -680,16 +697,17 @@ select{
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">SCRIPTING</summary>
-        <a class="tabdown-details2">Enabled:
+        <a class="tabdown-details2 right-indent">Enabled:
           <label class="checkmark-container alignright">
             <input type="checkbox" checked />
             <span class="checkmark"></span>
           </label>
         </a>
+        <a class="tabdown-details2 right-indent">(ADDSCRIPT)</a>
       </details>
       <details>
         <summary class="tabdown-details2 left-indent">LIGHTING</summary>
-        <a class="tabdown-details2">Light bake:
+        <a class="tabdown-details2 right-indent">Light bake:
           <label class="checkmark-container alignright">
             <input type="checkbox" checked />
             <span class="checkmark"></span>
@@ -1221,5 +1239,44 @@ options_team.eq((options_team.index($selectedPrev_team) + 1) % options_team.leng
 });
 </script>
 
+<script>
+/*-------------boundary-------------*/
+/*left menu show/hide*/
+$('#left_menu_opener_boundary').click( function(event){
+        event.stopPropagation();
+        $(".left_menu").not('#left_menu__variant_boundary').hide();
+        $('#left_menu__variant_boundary').toggle();
+    });
+    $(document).click( function(){
+        $(".left_menu").hide();
+    });
+</script>
+
+<script>
+$(".left_menu_option").click( function() {
+        if( $("#left_menu__variant_boundary").css('display') == 'block' ) {
+          $(".left_menu_option").removeClass("left_menu_option_selected");
+          $(this).addClass("left_menu_option_selected");
+          $("#left_menu_opener_boundary").text($(this).text());
+          $((this).parent).hide();
+} else {
+}
+});
+</script>
+
+<script>
+$("#arrow_left_boundary").click(function() {
+  var $selectedPrev_boundary = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+  var options_boundary = $("#left_menu__variant_boundary.left_menu").children();
+    options_boundary.eq((options_boundary.index($selectedPrev_boundary) - 1) % options_boundary.length).addClass("left_menu_option_selected");
+    $("#left_menu_opener_boundary").text($(".left_menu_option_selected").text());
+    });
+$("#arrow_right_boundary").click(function() {
+    var $selectedPrev_boundary = $(".left_menu_option_selected").removeClass("left_menu_option_selected");
+    var options_boundary = $("#left_menu__variant_boundary.left_menu").children();
+options_boundary.eq((options_boundary.index($selectedPrev_boundary) + 1) % options_boundary.length).addClass("left_menu_option_selected");
+    $("#left_menu_opener_boundary").text($(".left_menu_option_selected").text());
+});
+</script>
 </body>
 </html>
